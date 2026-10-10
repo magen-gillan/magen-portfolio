@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Magen Gillan — projects, experiments, and products." />
+  <title>Magen Gillan — Project Atlas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="https://avatars.githubusercontent.com/u/316799479?v=4" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="grain"></div>
+  <header class="topbar">
+    <a class="wordmark" href="#top" aria-label="Magen Gillan home"><span class="mark">M</span><span>MG / ATLAS</span></a>
+    <nav><a href="#projects" data-i18n="navProjects">Projects</a><a href="#about" data-i18n="navAbout">About</a></nav>
+    <div class="tools"><button id="langToggle" class="tool-btn" aria-label="Switch language">عربي</button><button id="themeToggle" class="tool-btn" aria-label="Toggle theme">◐</button></div>
+  </header>
+
+  <main id="top">
+    <section class="hero wrap">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="pulse"></span><span data-i18n="eyebrow">Independent maker · software & digital worlds</span></p>
+        <h1 data-i18n="heroTitle">Things I’m building<br><em>right now.</em></h1>
+        <p class="hero-lede" data-i18n="heroLede">A living index of experiments, apps, and ideas by Magen Gillan — collected from GitHub and made easy to explore.</p>
+        <div class="hero-meta"><span class="line"></span><span data-i18n="heroMeta">Updated from source repositories</span></div>
+      </div>
+      <div class="profile-card" id="about">
+        <div class="profile-orbit"><img id="avatar" src="https://avatars.githubusercontent.com/u/316799479?v=4" alt="Magen Gillan profile" /><label class="avatar-edit" for="avatarInput" title="Change avatar">✦</label><input id="avatarInput" type="file" accept="image/*" hidden /></div>
+        <div><p class="profile-kicker" data-i18n="profileKicker">THE MAKER</p><h2>Magen Gillan</h2><p data-i18n="profileBio">Building playful software, useful tools, and alternate digital spaces.</p><a class="text-link" href="https://github.com/magen-gillan" target="_blank" rel="noreferrer"><span data-i18n="viewGithub">View GitHub profile</span> ↗</a></div>
+        <p class="avatar-note" data-i18n="avatarNote">Tap ✦ to change this avatar. It is saved on this device.</p>
+      </div>
+    </section>
+
+    <section id="projects" class="projects wrap">
+      <div class="section-head"><div><p class="eyebrow"><span data-i18n="selectedWork">SELECTED WORK</span><span class="count">07</span></p><h2 data-i18n="projectTitle">A small atlas of current work.</h2></div><p class="section-note" data-i18n="projectNote">Open a card to see the source, stack, latest release, and available links.</p></div>
+      <div id="projectGrid" class="project-grid"></div>
+    </section>
+  </main>
+  <footer class="footer wrap"><span>© 2026 Magen Gillan</span><span data-i18n="footerText">Built from open source, one project at a time.</span><a href="https://github.com/magen-gillan" target="_blank" rel="noreferrer">github.com/magen-gillan ↗</a></footer>
+
+  <dialog id="projectDialog"><button class="dialog-close" id="dialogClose" aria-label="Close">×</button><div id="dialogContent"></div></dialog>
+  <script src="projects.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
