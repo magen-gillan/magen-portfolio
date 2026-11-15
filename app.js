@@ -1,100 +1,312 @@
-const I18N={en:{navProjects:'Projects',navAbout:'About',eyebrow:'Independent maker · software & digital worlds',heroTitle:'Things I’m building<br><em>right now.</em>',heroLede:'A living index of experiments, apps, and ideas by Magen Gillan — collected from GitHub and made easy to explore.',heroMeta:'Updated from source repositories',profileKicker:'THE MAKER',profileBio:'Building playful software, useful tools, and alternate digital spaces.',viewGithub:'View GitHub profile',avatarNote:'Tap ✦ to change this avatar. It is saved on this device.',selectedWork:'SELECTED WORK',footerText:'Built from open source, one project at a time.',source:'Source repository',site:'Visit site',latest:'Latest release',stack:'Built with',updated:'Last updated',private:'Private repository',public:'Public repository',download:'Download latest',release:'View release',noRelease:'No public release yet',files:'Project signals',featBadge:'Featured project',featSync:'read live from the repository',mainFeatures:'Main features',releasedOn:'Released',platform:'Platform',screenshots:'Screenshots',releaseFiles:'Release files',otherTitle:'More from the atlas.',otherNote:'Open a card for in-app screenshots, the source, the stack, and every release file.',syncNote:'App names, versions, screenshots and download links are read live from the GitHub repositories — no manual edits needed.',beta:'beta',viewAll:'View all releases',downloadFor:'Download'},ar:{navProjects:'المشاريع',navAbout:'نبذة',eyebrow:'صانع مستقل · برمجيات وعوالم رقمية',heroTitle:'أشياء أبنيها<br><em>الآن.</em>',heroLede:'فهرس حي لتجاربي وتطبيقاتي وأفكاري — مجمعة من GitHub ومصممة لتكون سهلة الاستكشاف.',heroMeta:'محدّث من المستودعات الأصلية',profileKicker:'صانع المشاريع',profileBio:'أبني برمجيات ممتعة وأدوات مفيدة ومساحات رقمية مختلفة.',viewGithub:'زيارة ملف GitHub',avatarNote:'اضغط ✦ لتغيير الصورة. تُحفظ على هذا الجهاز.',selectedWork:'أعمال مختارة',footerText:'مبني من المصدر المفتوح، مشروعًا بعد مشروع.',source:'المستودع المصدر',site:'زيارة الموقع',latest:'آخر إصدار',stack:'التقنيات',updated:'آخر تحديث',private:'مستودع خاص',public:'مستودع عام',download:'تحميل آخر إصدار',release:'عرض الإصدار',noRelease:'لا يوجد إصدار عام بعد',files:'مؤشرات المشروع',featBadge:'المشروع الرئيسي',featSync:'يُقرأ مباشرة من المستودع',mainFeatures:'المزايا الرئيسية',releasedOn:'صدر في',platform:'المنصات',screenshots:'لقطات الشاشة',releaseFiles:'ملفات الإصدار',otherTitle:'المزيد من الأطلس.',otherNote:'افتح أي بطاقة لرؤية لقطات من داخل التطبيق والمصدر والتقنيات وكل ملفات الإصدار.',syncNote:'أسماء التطبيقات والإصدارات ولقطات الشاشة وروابط التحميل تُقرأ مباشرة من مستودعات GitHub دون أي تعديل يدوي.',beta:'تجريبي',viewAll:'كل الإصدارات',downloadFor:'تحميل'}};
-let lang=localStorage.getItem('atlas-lang')||'en';
-const $=s=>document.querySelector(s); const t=k=>I18N[lang][k]||k;
+(() => {
+  "use strict";
+  const COPY = {
+    en: {
+      navHome: "Home", navApps: "Apps", navAbout: "About",
+      heroEyebrow: "INDEPENDENT MAKER · ANDROID STUDIO", heroTitleA: "Small ideas.", heroTitleB: "Thoughtfully built.",
+      heroLede: "I make useful Android tools that feel a little more human — shaped by curiosity, careful details, and the people who use them.",
+      exploreApps: "Explore the apps", githubProfile: "Visit GitHub", heroFootnote: "A focused collection of tools for everyday Android.",
+      alishaName: "Alisha", alishaRole: "Your guide to Magen", alishaOpen: "Meet Alisha", alishaClose: "Close Alisha's note", alishaPrompt: "TAP", alishaMessage: "Hi, I’m Alisha. I can guide you to the Magen app for video, downloads, music or wallpapers.", alishaAction: "Explore the four apps", liveLabel: "HERE", scrollCue: "SCROLL TO EXPLORE",
+      signalLabel: "THE MAGEN ECOSYSTEM", signalText: "Four focused apps. One thoughtful point of view.",
+      metricApps: "ANDROID APPS", metricLanguages: "LANGUAGES", metricCare: "CARE IN EVERY DETAIL",
+      appsEyebrow: "TOOLS FOR YOUR PHONE", appsTitle: "Meet the Magen apps.",
+      appsIntro: "Each one has a clear job: play your media, bring a download within reach, keep music organized, or make your favorite wallpapers feel alive.",
+      liveRelease: "LATEST PUBLIC RELEASES", releaseChecking: "CHECKING GITHUB…", releaseLive: "LIVE FROM GITHUB", releaseFallback: "SHOWING SAVED RELEASE INFO",
+      downloadLatest: "Download latest APK", sourceCode: "Source", details: "Details", allReleases: "All releases", appNumber: "APP",
+      detailHighlights: "WHAT IT DOES WELL", screenshotsPending: "FRESH SCREENSHOTS PENDING", screenshotsPendingLong: "Updated screenshots of the current Magen interface will be added when they are provided.", appIconAlt: "App icon", techLabel: "BUILT WITH",
+      aboutEyebrow: "A NOTE FROM THE MAKER", aboutTitle: "Technology should feel useful, calm, and a little bit delightful.",
+      aboutBody: "Magen is an independent collection of Android projects built around a simple idea: thoughtful software can make everyday things easier without getting in the way. Alisha is the friendly face that connects them.",
+      moreOnGithub: "More of the work on GitHub", makerLabel: "THE PERSON BEHIND MAGEN", closingEyebrow: "BUILT IN THE OPEN",
+      closingTitle: "Find your next favorite tool.", closingBody: "All four apps are open source. Explore the code, read what’s new, or download the latest release.",
+      browseApps: "Browse all apps", footerNote: "Made with intention. Shared in the open.",
+      languageSwitch: "عربي", languageAria: "Switch to Arabic", themeLight: "Switch to light theme", themeDark: "Switch to dark theme",
+      menuOpen: "Open navigation", menuClose: "Close navigation", closeDetails: "Close details", downloadAlt: "Download latest APK",
+      releaseLabel: "LATEST", apiUnavailable: "Live release info is temporarily unavailable. Showing the latest saved links.",
+      mediaLabel: "ALISHA / MAGEN GUIDE"
+    },
+    ar: {
+      navHome: "الرئيسية", navApps: "التطبيقات", navAbout: "عن Magen",
+      heroEyebrow: "صانع مستقل · تطبيقات أندرويد", heroTitleA: "أفكار صغيرة.", heroTitleB: "تنفيذ بعناية.",
+      heroLede: "أصنع أدوات أندرويد مفيدة وقريبة من الناس، بتصميمها بدافع الفضول والاهتمام بالتفاصيل ومن يستخدمها.",
+      exploreApps: "اكتشف التطبيقات", githubProfile: "GitHub", heroFootnote: "مجموعة مركزة من الأدوات اليومية لأندرويد.",
+      alishaName: "أليشا", alishaRole: "دليلتك إلى Magen", alishaOpen: "تعرّف إلى أليشا", alishaClose: "إغلاق رسالة أليشا", alishaPrompt: "اضغط", alishaMessage: "مرحبًا، أنا أليشا. أساعدك في العثور على تطبيق Magen المناسب للفيديو أو التنزيل أو الموسيقى أو الخلفيات.", alishaAction: "استكشف التطبيقات الأربعة", liveLabel: "معك", scrollCue: "تابع لاكتشاف المزيد",
+      signalLabel: "منظومة MAGEN", signalText: "أربعة تطبيقات، ورؤية واحدة تهتم بالتفاصيل.",
+      metricApps: "تطبيقات أندرويد", metricLanguages: "لغتان", metricCare: "عناية بكل تفصيل",
+      appsEyebrow: "أدوات لهاتفك", appsTitle: "تعرّف إلى تطبيقات Magen.",
+      appsIntro: "لكل تطبيق مهمة واضحة: تشغيل وسائطك، وتنزيل ما تحتاجه، وتنظيم موسيقاك، أو جعل خلفياتك المفضلة أكثر حيوية.",
+      liveRelease: "أحدث الإصدارات العامة", releaseChecking: "جارٍ التحقق من GitHub…", releaseLive: "مباشر من GitHub", releaseFallback: "عرض بيانات الإصدار المحفوظة",
+      downloadLatest: "تنزيل أحدث APK", sourceCode: "المصدر", details: "التفاصيل", allReleases: "كل الإصدارات", appNumber: "تطبيق",
+      detailHighlights: "أبرز ما يقدمه", screenshotsPending: "بانتظار لقطات حديثة", screenshotsPendingLong: "ستُضاف لقطات جديدة تعكس واجهة Magen الحالية عند تزويدنا بها.", appIconAlt: "أيقونة التطبيق", techLabel: "مبني باستخدام",
+      aboutEyebrow: "ملاحظة من المطوّر", aboutTitle: "ينبغي أن تكون التقنية مفيدة وهادئة، وفيها لمسة من المتعة.",
+      aboutBody: "Magen مجموعة مستقلة من مشاريع أندرويد تقوم على فكرة بسيطة: يمكن للبرمجيات المدروسة أن تسهّل تفاصيل يومك دون أن تقف في طريقك. وأليشا هي الوجه الودود الذي يجمع هذه التطبيقات.",
+      moreOnGithub: "شاهد المزيد من العمل على GitHub", makerLabel: "الشخص وراء MAGEN", closingEyebrow: "مفتوح المصدر",
+      closingTitle: "اكتشف أداتك التالية.", closingBody: "التطبيقات الأربعة مفتوحة المصدر. تصفح الشيفرة، واكتشف الجديد، أو نزّل أحدث إصدار.",
+      browseApps: "تصفح التطبيقات", footerNote: "صُنع بعناية، ومتاح للجميع.",
+      languageSwitch: "EN", languageAria: "Switch to English", themeLight: "التبديل إلى المظهر الفاتح", themeDark: "التبديل إلى المظهر الداكن",
+      menuOpen: "فتح قائمة التنقل", menuClose: "إغلاق قائمة التنقل", closeDetails: "إغلاق التفاصيل", downloadAlt: "تنزيل أحدث APK",
+      releaseLabel: "الأحدث", apiUnavailable: "تعذر جلب بيانات الإصدار مؤقتًا. تظهر روابط أحدث إصدار محفوظة.",
+      mediaLabel: "أليشا / دليلة MAGEN"
+    }
+  };
+  const CACHE_KEY = "magen-atlas-github-v2";
+  const CACHE_TTL = 30 * 60 * 1000;
+  const state = { lang: "en", theme: "dark", releases: {}, dialogId: null, releaseFailures: null };
+  const $ = (selector, root = document) => root.querySelector(selector);
+  const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+  const esc = (value) => String(value ?? "").replace(/[&<>"']/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch]));
+  const t = (key) => COPY[state.lang][key] || COPY.en[key] || key;
+  const appList = Array.isArray(window.MAGEN_APPS) ? window.MAGEN_APPS : [];
+  try { localStorage.removeItem("magen-atlas-github-v1"); } catch { /* ignore unavailable storage */ }
+  const savedCache = (() => { try { return JSON.parse(localStorage.getItem(CACHE_KEY) || "{}"); } catch { return {}; } })();
 
-/* ---------- live data layer (read from the GitHub repositories) ---------- */
-const GH='https://api.github.com/repos/magen-gillan/';
-const RAW=(p,path)=>`https://raw.githubusercontent.com/magen-gillan/${p.id}/main/${path}`;
-const TTL=30*60*1000;
-const fmtMB=b=>!b?'':b>=1048576?(b/1048576).toFixed(1)+' MB':Math.round(b/1024)+' KB';
-const fmtDate=d=>{try{return new Date(d).toLocaleDateString(lang==='ar'?'ar':'en',{year:'numeric',month:'short',day:'numeric'})}catch(e){return d}};
-function readLive(p){try{const all=JSON.parse(localStorage.getItem('atlas-live')||'{}');const v=all[p.id];if(v&&Date.now()-v.t<TTL)return v}catch(e){}return null}
-function saveLive(p,v){try{const all=JSON.parse(localStorage.getItem('atlas-live')||'{}');all[p.id]={t:Date.now(),name:v.name,rel:v.rel,shots:v.shots};localStorage.setItem('atlas-live',JSON.stringify(all))}catch(e){}}
-function parseName(p,txt){if(!txt)return null;if(p.config.type==='metadata'){const m=txt.match(/title:\s*["']([^"']+)["']/);return m?m[1].split(/\s+—\s+/)[0].trim():null}const m=txt.match(/<string[^>]*\sname="app_name"[^>]*>([^<]+)<\/string>/);return m?m[1].replace(/\\'/g,"'").trim():null}
-async function syncProject(p){
-  const c=readLive(p);if(c){p.live=c;return}
-  const out={};
-  await Promise.all([
-    fetch(RAW(p,p.config.path)).then(r=>r.ok?r.text():null).then(txt=>{const n=parseName(p,txt);if(n)out.name=n}).catch(()=>{}),
-    fetch(GH+p.id+'/releases?per_page=1').then(r=>r.ok?r.json():null).then(list=>{const r=Array.isArray(list)?list[0]:null;if(r&&r.tag_name)out.rel={tag:r.tag_name,date:r.published_at,pre:!!r.prerelease,assets:(r.assets||[]).filter(a=>/\.apk$/i.test(a.name)).map(a=>({name:a.name,size:a.size,url:a.browser_download_url}))}}).catch(()=>{}),
-    p.shots&&p.shots[0]?fetch(GH+p.id+'/contents/'+p.shots[0]).then(r=>r.ok?r.json():null).then(list=>{if(Array.isArray(list)){const imgs=list.filter(f=>/\.(png|jpe?g|webp|gif)$/i.test(f.name)&&f.download_url).sort((a,b)=>a.name.localeCompare(b.name,undefined,{numeric:true}));if(imgs.length)out.shots=imgs.map(f=>({name:f.name,size:f.size,url:f.download_url}))}}).catch(()=>{}):Promise.resolve()
-  ]);
-  p.live=out;if(out.name||out.rel||out.shots)saveLive(p,out);
-}
-async function hydrateLive(){await Promise.all(PROJECTS.map(syncProject));render();renderFeatured()}
-const nameOf=p=>(p.live&&p.live.name)||p.name;
-const verOf=p=>(p.live&&p.live.rel)?p.live.rel.tag:(p.release||'');
-function relOf(p){if(p.live&&p.live.rel)return p.live.rel;const assets=p.download?[{name:p.downloadLabel||'APK',size:0,url:p.download}]:[];return p.release?{tag:p.release,assets:assets,date:null,pre:false}:null}
-function shotsOf(p){if(p.live&&p.live.shots&&p.live.shots.length)return p.live.shots;const f=[];if(p.shotFallback)f.push({name:'shot',size:0,url:RAW(p,p.shotFallback)});if(p.featured&&p.heroShotM)f.push({name:'mobile',size:0,url:RAW(p,p.heroShotM)});return f}
-function visualOf(p){const s=shotsOf(p);if(s.length)return{url:s[0].url,mode:'photo'};if(p.icon)return{url:RAW(p,p.icon),mode:'icon'};return{url:null,mode:'mono'}}
-const monoOf=p=>nameOf(p).split(' ').map(w=>w[0]||'').join('').slice(0,2).toUpperCase();
-function shotFail(img,mono){const d=img.parentElement;if(!d)return;d.className='shot mono';img.remove();d.insertAdjacentHTML('afterbegin',`<span>${mono}</span>`)}
+  function secureHttpsUrl(value, fallback) {
+    try { const parsed = new URL(value); return parsed.protocol === "https:" ? parsed.href : fallback; }
+    catch { return fallback; }
+  }
+  function readAppCache(appId, key) {
+    const cached = savedCache[appId]?.[key];
+    return cached && Date.now() - cached.savedAt < CACHE_TTL ? cached.value : null;
+  }
+  function setAppCache(appId, key, value) {
+    savedCache[appId] ||= {};
+    savedCache[appId][key] = { savedAt: Date.now(), value };
+    try { localStorage.setItem(CACHE_KEY, JSON.stringify(savedCache)); } catch { /* private browsing may disable storage */ }
+  }
+  function fallbackRelease(app) {
+    return { tag_name: app.versionFallback, html_url: app.releaseFallback, published_at: "", asset: { name: app.downloadNameFallback, browser_download_url: app.apkFallback } };
+  }
+  function currentRelease(app) { return state.releases[app.id] || readAppCache(app.id, "release") || fallbackRelease(app); }
+  function imageUrl(app, path) {
+    return `https://raw.githubusercontent.com/magen-gillan/${encodeURIComponent(app.repo)}/main/${path.split("/").map(encodeURIComponent).join("/")}`;
+  }
+  function iconUrl(app) { return imageUrl(app, app.iconPath); }
 
-/* ---------- rendering ---------- */
-function setLanguage(next){lang=next;localStorage.setItem('atlas-lang',lang);document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';document.body.classList.toggle('rtl',lang==='ar');$('#langToggle').textContent=lang==='ar'?'EN':'عربي';document.querySelectorAll('[data-i18n]').forEach(e=>e.innerHTML=t(e.dataset.i18n));render();renderFeatured();}
-function renderFeatured(){
-  const p=PROJECTS.find(x=>x.featured),el=$('#featured');if(!p||!el)return;
-  const rel=relOf(p),ver=verOf(p),shots=shotsOf(p),asset=rel&&rel.assets[0];
-  const desk=shots[0]?shots[0].url:'',mob=shots[1]?shots[1].url:'';
-  const feats=lang==='ar'?p.featuresAr:p.features,host=p.site?p.site.replace(/^https?:\/\//,''):'';
-  el.innerHTML=`
-  <div class="feat-head"><p class="eyebrow"><span class="pulse"></span><span>${t('featBadge')}</span><span class="feat-sync">${t('featSync')}</span></p></div>
-  <div class="feat-card">
-    <div class="feat-info">
-      <p class="feat-kind">${lang==='ar'?p.kindAr:p.kind}</p>
-      <h2 class="feat-name">${nameOf(p)}</h2>
-      <p class="feat-desc">${lang==='ar'?p.descAr:p.desc}</p>
-      <p class="feat-flabel">${t('mainFeatures')}</p>
-      <ul class="feat-features">${(feats||[]).map(f=>`<li>${f}</li>`).join('')}</ul>
-      <div class="feat-actions">
-        ${p.site?`<a class="action" href="${p.site}" target="_blank" rel="noreferrer">${t('site')} ↗</a>`:''}
-        ${asset?`<a class="action alt" href="${asset.url}" target="_blank" rel="noreferrer">↓ ${t('downloadFor')}${asset.size?' · '+fmtMB(asset.size):''}</a>`:''}
-        <a class="action ghost" href="${p.repo}" target="_blank" rel="noreferrer">${t('source')} ↗</a>
-      </div>
-      <dl class="feat-stats">
-        <div><dt>${t('latest')}</dt><dd>${ver||t('noRelease')}${rel&&rel.pre?` <i class="beta">${t('beta')}</i>`:''}</dd></div>
-        <div><dt>${t('releasedOn')}</dt><dd>${rel&&rel.date?fmtDate(rel.date):(p.updated?fmtDate(p.updated):'—')}</dd></div>
-        <div><dt>${t('platform')}</dt><dd>${lang==='ar'?p.platformAr:p.platform}</dd></div>
-      </dl>
-    </div>
-    <figure class="feat-visual" style="background-image:url('${RAW(p,p.heroBg)}')">
-      ${desk?`<div class="feat-frame"><span class="frame-bar"><i></i><i></i><i></i><b>${host}</b></span><img src="${desk}" alt="${nameOf(p)} — ${t('screenshots')}" loading="lazy"></div>`:''}
-      ${mob?`<img class="feat-phone" src="${mob}" alt="${nameOf(p)} — ${t('screenshots')}" loading="lazy">`:''}
-    </figure>
-  </div>
-  <p class="sync-note">${t('syncNote')}</p>`;
-}
-function card(p,i,total){const v=visualOf(p);return `<article class="project-card ${i<2?'big':''}" data-id="${p.id}">
-  <div class="shot ${v.mode}">${v.url?`<img src="${v.url}" alt="${nameOf(p)} — ${t('screenshots')}" loading="lazy" onerror="shotFail(this,'${monoOf(p)}')">`:''}${v.mode==='mono'?`<span>${monoOf(p)}</span>`:''}</div>
-  <div class="card-body">
-    <div class="card-top"><span class="project-number">0${i+1} / ${String(total).padStart(2,'0')}</span><span class="project-type">${lang==='ar'?p.kindAr:p.kind}</span></div>
-    <div><h3>${nameOf(p)}</h3><p class="project-desc">${lang==='ar'?p.descAr:p.desc}</p></div>
-    <div class="card-bottom"><span class="project-lang">${p.lang}${verOf(p)?' · '+verOf(p):''}${p.private?' · '+t('private'):''}</span><span class="arrow">↗</span></div>
-  </div></article>`}
-function render(){const others=PROJECTS.filter(p=>!p.featured);$('#projectGrid').innerHTML=others.map((p,i)=>card(p,i,others.length)).join('');document.querySelectorAll('.project-card').forEach(c=>c.addEventListener('click',()=>openProject(c.dataset.id)));$('.count').textContent=String(others.length).padStart(2,'0');}
-function openProject(id){const p=PROJECTS.find(x=>x.id===id);if(!p)return;
-  const rel=relOf(p),ver=verOf(p),shots=shotsOf(p).slice(0,8),asset=rel&&rel.assets[0];
-  $('#dialogContent').innerHTML=`
-  <p class="dialog-kicker">PROJECT / ${String(PROJECTS.indexOf(p)+1).padStart(2,'0')}</p>
-  <h2 class="dialog-title">${nameOf(p)}</h2>
-  <p class="dialog-desc">${lang==='ar'?p.descAr:p.desc}</p>
-  ${shots.length?`<div class="dialog-gallery">${shots.map(s=>`<a href="${s.url}" target="_blank" rel="noreferrer" title="${s.name}"><img src="${s.url}" loading="lazy" alt="${nameOf(p)}"></a>`).join('')}</div>`:''}
-  <div class="detail-grid">
-    <div><div class="detail-label">${t('stack')}</div><div class="detail-value">${p.lang}</div></div>
-    <div><div class="detail-label">${t('updated')}</div><div class="detail-value">${fmtDate((rel&&rel.date)||p.updated)}</div></div>
-    <div><div class="detail-label">${t('latest')}</div><div class="detail-value">${ver||t('noRelease')}${rel&&rel.pre?` <i class="beta">${t('beta')}</i>`:''}</div></div>
-    <div><div class="detail-label">${t('files')}</div><div class="file-list">${p.files.map(f=>`<span class="file-pill">${f}</span>`).join('')}</div></div>
-  </div>
-  ${rel&&rel.assets.length?`<div class="dialog-assets"><div class="detail-label" style="margin:26px 0 10px">${t('releaseFiles')} · ${rel.tag}</div>${rel.assets.map(a=>`<a class="asset" href="${a.url}" target="_blank" rel="noreferrer"><span class="asset-name">${a.name}</span><span class="asset-size">${fmtMB(a.size)}</span><span class="asset-dl">↓ ${t('downloadFor')}</span></a>`).join('')}</div>`:''}
-  <div class="dialog-actions">
-    ${p.site?`<a class="action" href="${p.site}" target="_blank" rel="noreferrer">${t('site')} ↗</a>`:''}
-    <a class="action" href="${p.repo}" target="_blank" rel="noreferrer">${t('source')} ↗</a>
-    ${asset?`<a class="action alt" href="${asset.url}" target="_blank" rel="noreferrer">↓ ${asset.name}</a>`:''}
-    <a class="action ghost" href="${p.repo}/releases" target="_blank" rel="noreferrer">${t('viewAll')} ↗</a>
-  </div>`;
-  $('#projectDialog').showModal();}
+  function renderApps() {
+    const grid = $("#appsGrid");
+    if (!grid) return;
+    grid.innerHTML = appList.map((app, index) => {
+      const rel = currentRelease(app);
+      const apk = rel.asset?.browser_download_url || app.apkFallback;
+      const file = rel.asset?.name || app.downloadNameFallback;
+      const icon = iconUrl(app);
+      const tags = app.features[state.lang].slice(0, 2).map((feature) => `<span class="feature-chip">${esc(feature)}</span>`).join("");
+      return `<article class="app-card reveal" style="--app-accent:${esc(app.accent)}" data-app-id="${esc(app.id)}">
+        <div class="app-card-art">
+          <span class="app-index">${t("appNumber")} / 0${index + 1}</span>
+          <div class="app-icon-stage"><img class="app-icon-hero" src="${esc(icon)}" alt="${esc(t("appIconAlt"))} — ${esc(app.name)}" loading="lazy"><span class="app-preview-note">${esc(t("screenshotsPending"))}</span></div>
+        </div>
+        <div class="app-card-body">
+          <div class="app-meta-line"><span class="app-category">${esc(app.category[state.lang])}</span><span class="app-version">${esc(rel.tag_name || app.versionFallback)}</span></div>
+          <h3>${esc(app.name)}</h3>
+          <p class="app-description">${esc(app.description[state.lang])}</p>
+          <div class="app-features">${tags}</div>
+          <div class="app-card-actions">
+            <a class="download-button" href="${esc(secureHttpsUrl(apk, app.apkFallback))}" target="_blank" rel="noreferrer" aria-label="${esc(t("downloadAlt"))} — ${esc(app.name)}">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v11m0 0 4-4m-4 4-4-4M5 17v3h14v-3"/></svg><span>${esc(t("downloadLatest"))}</span>
+            </a>
+            <a class="source-button" href="https://github.com/magen-gillan/${encodeURIComponent(app.repo)}" target="_blank" rel="noreferrer">${esc(t("sourceCode"))} <span aria-hidden="true">↗</span></a>
+            <button class="details-button" type="button" data-open-app="${esc(app.id)}">${esc(t("details"))} <span aria-hidden="true">＋</span></button>
+            <span class="release-file">${esc(file)}</span>
+          </div>
+        </div>
+      </article>`;
+    }).join("");
+    observeReveals(grid);
+  }
 
-/* ---------- chrome: dialog, toggles, avatar ---------- */
-$('#dialogClose').addEventListener('click',()=>$('#projectDialog').close());$('#projectDialog').addEventListener('click',e=>{if(e.target.id==='projectDialog')$('#projectDialog').close()});$('#langToggle').addEventListener('click',()=>setLanguage(lang==='en'?'ar':'en'));$('#themeToggle').addEventListener('click',()=>{document.body.classList.toggle('dark');localStorage.setItem('atlas-theme',document.body.classList.contains('dark')?'dark':'light')});
-const storedAvatar=localStorage.getItem('atlas-avatar');if(storedAvatar)$('#avatar').src=storedAvatar;$('#avatarInput').addEventListener('change',e=>{const file=e.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=()=>{localStorage.setItem('atlas-avatar',reader.result);$('#avatar').src=reader.result};reader.readAsDataURL(file)});if(localStorage.getItem('atlas-theme')==='dark')document.body.classList.add('dark');setLanguage(lang);
-hydrateLive();
+  function renderDialog(app) {
+    const rel = currentRelease(app);
+    const features = app.features[state.lang].map((item) => `<li>${esc(item)}</li>`).join("");
+    const content = $("#dialogContent");
+    content.innerHTML = `<span class="dialog-topline">${esc(app.category[state.lang])} · ${esc(rel.tag_name || app.versionFallback)}</span>
+      <h2 class="dialog-title" id="dialogTitle">${esc(app.name)}</h2>
+      <p class="dialog-description">${esc(app.description[state.lang])}</p>
+      <div class="dialog-columns"><div><span class="dialog-features-title">${esc(t("detailHighlights"))}</span><ul class="dialog-feature-list">${features}</ul></div>
+        <div class="dialog-screenshots-pending" role="status">${esc(t("screenshotsPendingLong"))}</div></div>
+      <div class="dialog-stack">${esc(t("techLabel"))} · ${esc(app.stack)}</div>
+      <div class="dialog-actions"><a class="download-button" href="${esc(secureHttpsUrl(rel.asset?.browser_download_url || app.apkFallback, app.apkFallback))}" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v11m0 0 4-4m-4 4-4-4M5 17v3h14v-3"/></svg>${esc(t("downloadLatest"))}</a><a class="source-button" href="https://github.com/magen-gillan/${encodeURIComponent(app.repo)}" target="_blank" rel="noreferrer">${esc(t("sourceCode"))} ↗</a><a class="source-button" href="${esc(secureHttpsUrl(rel.html_url, app.releaseFallback))}" target="_blank" rel="noreferrer">${esc(t("allReleases"))} ↗</a></div>`;
+  }
+
+  function openDetails(appId) {
+    const app = appList.find((item) => item.id === appId);
+    if (!app) return;
+    state.dialogId = appId;
+    renderDialog(app);
+    const dialog = $("#appDialog");
+    if (!dialog.open) dialog.showModal();
+  }
+
+  async function fetchJson(url) {
+    const response = await fetch(url, { headers: { Accept: "application/vnd.github+json" }, mode: "cors" });
+    if (!response.ok) throw new Error(`GitHub returned ${response.status}`);
+    return response.json();
+  }
+  function selectApk(assets) {
+    const apks = (assets || []).filter((asset) => /\.apk$/i.test(asset.name || "") && !/\.sha256$/i.test(asset.name || ""));
+    return apks.find((asset) => /arm64-v8a/i.test(asset.name) && !/^latest\.apk$/i.test(asset.name))
+      || apks.find((asset) => /arm64/i.test(asset.name) && !/^latest\.apk$/i.test(asset.name))
+      || apks.find((asset) => /^latest\.apk$/i.test(asset.name))
+      || apks[0] || null;
+  }
+  async function loadRelease(app) {
+    const cached = readAppCache(app.id, "release");
+    if (cached) state.releases[app.id] = cached;
+    const release = await fetchJson(`https://api.github.com/repos/magen-gillan/${encodeURIComponent(app.repo)}/releases/latest`);
+    const asset = selectApk(release.assets);
+    if (!asset) throw new Error(`No APK in latest release for ${app.repo}`);
+    const data = {
+      tag_name: release.tag_name || app.versionFallback,
+      html_url: release.html_url || app.releaseFallback,
+      published_at: release.published_at || "",
+      asset: { name: asset.name, browser_download_url: asset.browser_download_url }
+    };
+    state.releases[app.id] = data;
+    setAppCache(app.id, "release", data);
+    renderApps();
+    if (state.dialogId === app.id) renderDialog(app);
+  }
+  async function loadGitHubData() {
+    const results = await Promise.allSettled(appList.map((app) => loadRelease(app)));
+    state.releaseFailures = results.filter((item) => item.status === "rejected").length;
+    const status = $("#releaseStatus");
+    if (status) {
+      const failed = state.releaseFailures !== 0;
+      status.textContent = t(failed ? "releaseFallback" : "releaseLive");
+      status.classList.toggle("is-live", !failed);
+      status.classList.toggle("is-fallback", failed);
+      status.title = failed ? t("apiUnavailable") : "";
+    }
+  }
+
+  function applyLanguage(lang, persist = true) {
+    state.lang = lang === "ar" ? "ar" : "en";
+    document.documentElement.lang = state.lang;
+    document.documentElement.dir = state.lang === "ar" ? "rtl" : "ltr";
+    $$("[data-i18n]").forEach((node) => {
+      const value = t(node.dataset.i18n);
+      if (value) node.textContent = value;
+    });
+    const releaseStatus = $("#releaseStatus");
+    if (releaseStatus && state.releaseFailures !== null) {
+      const failed = state.releaseFailures !== 0;
+      releaseStatus.textContent = t(failed ? "releaseFallback" : "releaseLive");
+      releaseStatus.classList.toggle("is-live", !failed);
+      releaseStatus.classList.toggle("is-fallback", failed);
+      releaseStatus.title = failed ? t("apiUnavailable") : "";
+    }
+    const languageButton = $("#languageToggle");
+    if (languageButton) { languageButton.innerHTML = `${esc(t("languageSwitch"))} <span aria-hidden="true">↗</span>`; languageButton.setAttribute("aria-label", t("languageAria")); }
+    const themeButton = $("#modeToggle");
+    if (themeButton) { themeButton.setAttribute("aria-label", state.theme === "dark" ? t("themeLight") : t("themeDark")); themeButton.title = themeButton.getAttribute("aria-label"); }
+    const menu = $("#menuToggle");
+    if (menu) menu.setAttribute("aria-label", menu.getAttribute("aria-expanded") === "true" ? t("menuClose") : t("menuOpen"));
+    const close = $("#dialogClose");
+    if (close) close.setAttribute("aria-label", t("closeDetails"));
+    const alishaButton = $("#alishaInteract");
+    if (alishaButton) alishaButton.setAttribute("aria-label", alishaButton.getAttribute("aria-expanded") === "true" ? t("alishaClose") : t("alishaOpen"));
+    document.title = state.lang === "ar" ? "Magen Gillan — تطبيقات أندرويد مستقلة" : "Magen Gillan — Independent Android Apps";
+    const desc = $("meta[name='description']");
+    if (desc) desc.content = state.lang === "ar" ? "Magen Gillan — تطبيقات أندرويد مفيدة بعناية. تعرّف إلى أليشا وتطبيقات Magen Player وDownload وAudio وWallpaper." : "Magen Gillan — independent Android apps, thoughtfully built. Meet Alisha and explore Magen Player, Download, Audio and Wallpaper.";
+    renderApps();
+    if (state.dialogId) { const app = appList.find((item) => item.id === state.dialogId); if (app) renderDialog(app); }
+    if (persist) { try { localStorage.setItem("magen-lang", state.lang); } catch { /* ignore unavailable storage */ } }
+  }
+  function applyTheme(theme, persist = true) {
+    state.theme = theme === "light" ? "light" : "dark";
+    document.body.classList.toggle("light", state.theme === "light");
+    document.documentElement.style.colorScheme = state.theme;
+    const button = $("#modeToggle");
+    if (button) { button.setAttribute("aria-label", state.theme === "dark" ? t("themeLight") : t("themeDark")); button.title = button.getAttribute("aria-label"); }
+    if (persist) { try { localStorage.setItem("magen-theme", state.theme); } catch { /* ignore unavailable storage */ } }
+  }
+  function observeReveals(root = document) {
+    const items = $$(".reveal:not([data-observed])", root);
+    if (!items.length) return;
+    if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      items.forEach((item) => item.classList.add("is-visible")); return;
+    }
+    const observer = new IntersectionObserver((entries, instance) => {
+      entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add("is-visible"); instance.unobserve(entry.target); } });
+    }, { threshold: .08, rootMargin: "0px 0px -28px 0px" });
+    items.forEach((item, index) => { item.dataset.observed = "true"; item.style.transitionDelay = `${Math.min(index % 2, 1) * 80}ms`; observer.observe(item); });
+  }
+  function configureAlisha() {
+    const video = $("#alishaVideo");
+    const source = $("#alishaSource");
+    if (!video || !source) return;
+    const localPath = "assets/alisha-welcome.mp4";
+    const isGitHubPages = location.hostname.endsWith("github.io");
+    let usedFallback = isGitHubPages;
+    const useLocal = () => {
+      if (usedFallback) return;
+      usedFallback = true;
+      source.src = localPath;
+      video.load();
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) video.play().catch(() => {});
+    };
+    if (!isGitHubPages) source.src = "/manus-storage/alisha_welcome_28a53648.mp4";
+    video.addEventListener("error", useLocal);
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      video.autoplay = false;
+      video.removeAttribute("autoplay");
+      video.pause();
+    } else {
+      video.play().catch(() => {});
+    }
+    video.load();
+  }
+
+  function init() {
+    document.documentElement.classList.add("has-motion");
+    try { state.lang = localStorage.getItem("magen-lang") || "en"; state.theme = localStorage.getItem("magen-theme") || "dark"; } catch { /* defaults */ }
+    applyTheme(state.theme, false);
+    applyLanguage(state.lang, false);
+    renderApps();
+    observeReveals();
+    configureAlisha();
+    const alishaButton = $("#alishaInteract");
+    const alishaMessage = $("#alishaMessage");
+    alishaButton.addEventListener("click", () => {
+      const open = alishaButton.getAttribute("aria-expanded") !== "true";
+      alishaButton.setAttribute("aria-expanded", String(open));
+      alishaButton.setAttribute("aria-label", t(open ? "alishaClose" : "alishaOpen"));
+      alishaMessage.hidden = !open;
+    });
+    $("#alishaAction").addEventListener("click", () => {
+      alishaMessage.hidden = true;
+      alishaButton.setAttribute("aria-expanded", "false");
+      alishaButton.setAttribute("aria-label", t("alishaOpen"));
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !alishaMessage.hidden) {
+        alishaMessage.hidden = true;
+        alishaButton.setAttribute("aria-expanded", "false");
+        alishaButton.setAttribute("aria-label", t("alishaOpen"));
+        alishaButton.focus();
+      }
+    });
+    $("#yearNow").textContent = String(new Date().getFullYear());
+    $("#languageToggle").addEventListener("click", () => applyLanguage(state.lang === "en" ? "ar" : "en"));
+    $("#modeToggle").addEventListener("click", () => applyTheme(state.theme === "dark" ? "light" : "dark"));
+    $("#menuToggle").addEventListener("click", (event) => {
+      const button = event.currentTarget;
+      const open = button.getAttribute("aria-expanded") !== "true";
+      button.setAttribute("aria-expanded", String(open));
+      button.setAttribute("aria-label", open ? t("menuClose") : t("menuOpen"));
+      $("#primaryNav").classList.toggle("is-open", open);
+    });
+    $$("#primaryNav a").forEach((link) => link.addEventListener("click", () => {
+      $("#primaryNav").classList.remove("is-open");
+      $("#menuToggle").setAttribute("aria-expanded", "false");
+      $("#menuToggle").setAttribute("aria-label", t("menuOpen"));
+    }));
+    $("#appsGrid").addEventListener("click", (event) => {
+      const button = event.target.closest("[data-open-app]");
+      if (button) openDetails(button.dataset.openApp);
+    });
+    $("#dialogClose").addEventListener("click", () => $("#appDialog").close());
+    $("#appDialog").addEventListener("click", (event) => { if (event.target === event.currentTarget) event.currentTarget.close(); });
+    loadGitHubData();
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init, { once: true }); else init();
+})();

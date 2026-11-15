@@ -1,27 +1,32 @@
-# Magen Gillan — Project Atlas
+# خطة الموقع التعريفي لـ Magen Gillan
 
-## Implementation
+## التنفيذ
 
-A static GitHub Pages portfolio built with semantic HTML, CSS, and vanilla JavaScript. The site presents non-empty GitHub repositories as a curated atlas, with Alisha featured first and Magen Play as the next visual card. Project details open in an accessible dialog and include source links, stack, update date, release tag, and direct APK/download links where available.
+موقع ساكن من صفحة واحدة على GitHub Pages، باستخدام HTML وCSS وJavaScript عادي فقط، من دون خادم أو قاعدة بيانات أو خطوة بناء. يبدأ المستند HTML بمحتوى حقيقي وبيانات SEO قابلة للفهرسة، ويستضيف GitHub Pages الملفات من `main` والجذر `/`.
 
-Public repositories refresh their latest release and APK link from the GitHub Releases API on page load. The site remains usable if the API is unavailable because it includes curated fallback data.
+`projects.js` هو سجل التطبيقات الأربعة المعتمدة: `magen-player` و`Magen-download` و`magen-audio` و`magen-wallpaper`. يحمّل `app.js` أحدث إصدار عام من مسار GitHub Releases لكل مستودع، ويختار APK مناسبًا، ويحفظ أحدث البيانات محليًا مدة محدودة مع روابط احتياطية موثوقة عند تعذر API. تظل أسماء التطبيقات وروابط المصدر محددة في السجل الصحيح؛ لا يجري اكتشاف المستودعات أو استيراد مشاريع أخرى تلقائيًا.
 
-## Design
+يعرض كل تطبيق وصفًا مفصلًا ومزايا ورابط APK والمستودع وصفحة الإصدارات. لا توجد لقطات حديثة لواجهات التطبيقات حاليًا بعد حذف الصور القديمة، ولذلك تعرض البطاقات أيقونات التطبيقات وتنويهًا واضحًا بانتظار صور جديدة.
 
-- **Movement:** editorial software catalog with a quiet Swiss grid and tactile paper texture.
-- **Principles:** strong hierarchy, asymmetrical composition, generous whitespace, useful motion.
-- **Color:** warm paper and ink create a personal archive feeling; acid lime marks active/current work.
-- **Layout:** large featured Alisha card, offset smaller Magen Play card, then a compact atlas of projects.
-- **Signature elements:** circular M avatar, lime status pulse, numbered project cards.
-- **Interaction:** cards are invitations to inspect; language/theme settings persist locally.
-- **Brand essence:** a living index of playful software by an independent maker. Curious, precise, warm.
-- **Typography:** Manrope for voice and DM Mono for metadata.
-- **Avatar:** the profile image can be replaced by each visitor and persists via localStorage on that device. A public GitHub Pages site has no server-side database, so global sharing of a visitor's replacement requires a backend in a later phase.
+مقطع أليشا الحقيقي المرفق من المستخدم (`assets/alisha-welcome.mp4`) يظهر ضمن إطار بصري؛ تشغيله صامت ومتكرر وعلى السطر، ويتوقف عند تفضيل تقليل الحركة. النقر على بطاقتها يفتح إرشادًا نصيًا ثابتًا بالعربية أو الإنجليزية ورابطًا إلى التطبيقات؛ لا يعتمد على نموذج ذكاء اصطناعي أو خدمة خلفية.
 
-## Structure
+## التصميم
 
-- `index.html`: accessible shell and page sections
-- `styles.css`: responsive visual system and dark mode
-- `projects.js`: curated project metadata and fallback release links
-- `app.js`: rendering, i18n, dialog, release refresh, avatar persistence
-- `.github/workflows/pages.yml`: GitHub Pages deployment
+- حركة بصرية تقنية تحريرية داكنة، مع طبقات ضوئية هادئة ولمسات cyan وindigo وهوية Magen.
+- ترتيب غير متماثل: تقديم الرسالة وأزرار الاستكشاف بجانب أليشا، ثم بطاقات التطبيقات، ثم بيان تعريفي وخاتمة.
+- الحركات جزء من الهوية لكنها لا تحجب المحتوى؛ يدعم الموقع الهاتف، RTL/LTR، المظهر الفاتح، و`prefers-reduced-motion`.
+- التفاعلات واضحة باللمس ولوحة المفاتيح: اللغة، المظهر، التنقل، تفاصيل التطبيقات، التحميل، ورسالة أليشا.
+
+## الملفات
+
+- `index.html`: المحتوى الدلالي وبيانات الصفحة الأولية، canonical، Open Graph، وروابط ملفات العرض.
+- `styles.css`: نظام الألوان والطباعة والتخطيط المتجاوب والحركات.
+- `projects.js`: سجل التطبيقات الأربعة وروابط الإصدارات الاحتياطية.
+- `app.js`: عرض البطاقات والحوارات واللغات والمظهر وإصدارات GitHub والتفاعلات.
+- `assets/`: فيديو أليشا وملصقه.
+- `robots.txt` و`sitemap.xml`: تعليمات الفهرسة وخريطة عنوان GitHub Pages.
+- `.github/workflows/pages.yml`: سير نشر GitHub Pages.
+
+## النشر
+
+الموقع العام: `https://magen-gillan.github.io/magen-portfolio/`. مصدر GitHub Pages مضبوط على `main`، المسار `/`، مع فرض HTTPS. يبقى النشر ساكنًا؛ لا تُضاف أسرار أو إعدادات خلفية.

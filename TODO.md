@@ -1,11 +1,10 @@
-# Delivery checklist
+# قائمة تسليم الموقع الحالي
 
-- [x] Include every non-empty repository from the connected GitHub account.
-- [x] Exclude empty `obada` and `stor` repositories.
-- [x] Feature Alisha first and Magen Play second.
-- [x] Show compact cards with project essentials and detail dialogs.
-- [x] Include repository links and direct APK/latest-release links where available.
-- [x] Support English and Arabic with a persistent language toggle.
-- [x] Support a visitor-editable avatar saved on that visitor's device.
-- [x] Add responsive layout, dark mode, and GitHub Pages deployment workflow.
-- [x] Refresh latest public GitHub releases at runtime with curated fallbacks.
+- [x] عرض تطبيقات Magen الأربعة الصحيحة فقط وربط كل بطاقة بمستودعها الفعلي.
+- [x] توفير العربية والإنجليزية واتجاه RTL/LTR، مع تخطيط للهاتف والحاسوب ومظهر داكن/فاتح واحترام تقليل الحركة.
+- [x] عرض أليشا من المقطع الأصلي الصامت المتكرر؛ جعل بطاقتها تفاعلية برسالة ثنائية اللغة ورابط يفتح قسم التطبيقات.
+- [x] إزالة جلب وعرض لقطات الواجهات القديمة؛ استخدام أيقونات التطبيقات وتنبيه انتظار اللقطات الحديثة بدل صور غير ممثلة للنسخة الحالية.
+- [x] تحديث روابط الاحتياط إلى الإصدارات العامة الحالية، وجلب أحدث APK من GitHub Releases؛ اختُبرت روابط الملفات الأربعة وأعادت HTTP 206.
+- [x] تضمين محتوى HTML وبيانات الصفحة الأولية، canonical وOpen Graph وTwitter Card، `robots.txt` و`sitemap.xml` على عنوان GitHub Pages الصحيح.
+- [ ] نشر النسخة الجديدة على GitHub Pages والتحقق من الصفحة العامة بعد اكتمال النشر.
+- [ ] إضافة لقطات شاشة جديدة للواجهات الحالية عندما يرسلها صاحب المشروع.

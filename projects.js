@@ -1,19 +1,87 @@
-window.PROJECTS = [
-  {id:'alisha',name:'Alisha',kind:'AI companion · web + Android',kindAr:'رفيقة ذكية · ويب وأندرويد',desc:'A personal AI companion and creative digital space — Live2D avatar with text & voice chat, live on the web and on Android.',descAr:'رفيقة ذكاء اصطناعي ومساحة رقمية إبداعية — أفاتار Live2D مع محادثة نصية وصوتية، تعمل على الويب ومعها إصدار أندرويد.',lang:'TypeScript',private:false,repo:'https://github.com/magen-gillan/alisha',site:'https://alisha-puce.vercel.app',updated:'2026-10-20',files:['Next.js','TypeScript','Prisma','Live2D','Android APK'],release:'android-v1.0.2',download:'https://github.com/magen-gillan/alisha/releases/download/android-v1.0.2/Alisha-Android-v1.0.2.apk',downloadLabel:'Alisha Android APK',featured:true,
-    config:{type:'metadata',path:'src/app/layout.tsx'},
-    shots:['screenshots'],
-    shotFallback:'screenshots/01-home-desktop.png',heroShotM:'screenshots/02-home-mobile.png',heroBg:'public/backgrounds/aurora.webp',
-    platform:'Web + Android',platformAr:'ويب + أندرويد',
-    features:['Live2D avatar that listens and talks','Text & voice chat in your language','Runs on the web, with an Android build','Open source — self-host it in one click'],
-    featuresAr:['أفاتار Live2D يسمعك ويحادثك','محادثة نصية وصوتية بلغتك','يعمل على الويب ومعه إصدار أندرويد','مفتوح المصدر — استضِفه بنقرة واحدة']},
-  {id:'magen-player',name:'Magen Player',kind:'Android video player',kindAr:'مشغل فيديو لأندرويد',desc:'Feature-rich video player based on REX Player / libmpv with Arabic subtitle support, MagenShorts, and custom branding.',descAr:'مشغل فيديو غني بالميزات مبني على REX Player/libmpv مع دعم الترجمات العربية وMagenShorts وهوية مخصصة.',lang:'Kotlin',private:false,repo:'https://github.com/magen-gillan/magen-player',updated:'2026-11-03',files:['Kotlin','libmpv','Jetpack Compose','Arabic subtitles','MagenShorts'],release:'v5.5.1',download:'https://github.com/magen-gillan/magen-player/releases/download/v5.5.1/magen-player-v5.5.1-arm64-v8a.apk',downloadLabel:'magen-player-v5.5.1-arm64-v8a.apk',
-    config:{type:'strings',path:'app/src/main/res/values/strings.xml'},shots:['screenshots'],icon:'app/src/main/ic_launcher-web.png'},
-  {id:'Magen-download',name:'Magen Download',kind:'Android downloader',kindAr:'تطبيق تحميل لأندرويد',desc:'Video and audio downloader for Android (fork of Seal / yt-dlp) with bug fixes, a rebranded UI, and arm64-optimized builds.',descAr:'تطبيق تحميل الفيديو والصوت لأندرويد (مشتق من Seal/yt-dlp) مع إصلاحات للأخطاء وواجهة بهوية خاصة وإصدارات محسّنة لمعالجات arm64.',lang:'Kotlin',private:false,repo:'https://github.com/magen-gillan/Magen-download',updated:'2026-11-04',files:['Kotlin','yt-dlp','Material 3','arm64'],release:'v2.2.5',download:'https://github.com/magen-gillan/Magen-download/releases/download/v2.2.5/Magen-download-2.2.5-arm64.apk',downloadLabel:'Magen-download-2.2.5-arm64.apk',
-    config:{type:'strings',path:'app/src/main/res/values/strings.xml'},shots:['fastlane/metadata/android/en-US/images/phoneScreenshots'],shotFallback:'fastlane/metadata/android/en-US/images/phoneScreenshots/1.jpg'},
-  {id:'magen-play',name:'Magen Play',kind:'Android music player',kindAr:'مشغل موسيقى لأندرويد',desc:'A focused music player fork of Phonograph Plus with natural song sorting, anime iconography, and Media3.',descAr:'مشغل موسيقى مخصص مشتق من Phonograph Plus بترتيب طبيعي للأغاني وأيقونات أنمي وMedia3.',lang:'Kotlin',private:false,repo:'https://github.com/magen-gillan/magen-play',updated:'2026-11-04',files:['Kotlin','Jetpack Compose','Media3','Android'],release:'v2.7.8',download:'https://github.com/magen-gillan/magen-play/releases/download/v2.7.8/magen-play-v2.7.8.apk',downloadLabel:'Download APK',
-    config:{type:'strings',path:'app/src/main/res/values/strings.xml'},shots:['fastlane/metadata/android/en-US/images/phoneScreenshots'],shotFallback:'fastlane/metadata/android/en-US/images/phoneScreenshots/FlatPlayer.jpg'},
-  {id:'auto-wallpapers',name:'Auto Wallpapers',kind:'Android wallpaper manager',kindAr:'مدير خلفيات لأندرويد',desc:'An automatic anime wallpaper manager (fork of Paperize): albums, schedules, home & lock screen, and change-on-unlock.',descAr:'مدير خلفيات أنمي تلقائي (مشتق من Paperize): ألبومات وجدولة للشاشة الرئيسية وشاشة القفل مع تغيير فوري عند فتح الهاتف.',lang:'Kotlin',private:false,repo:'https://github.com/magen-gillan/auto-wallpapers',updated:'2026-10-04',files:['Kotlin','Jetpack Compose','AlarmManager','Android'],release:'v4.0.6-lint-fixes',download:'https://github.com/magen-gillan/auto-wallpapers/releases/download/v4.0.6-lint-fixes/auto-wallpapers-v4.0.6-lint-fixes.apk',downloadLabel:'Download APK',
-    config:{type:'strings',path:'app/src/main/res/values/strings.xml'},shots:['metadata/en-US/images/phoneScreenshots'],shotFallback:'metadata/en-US/images/phoneScreenshots/1.png'},
-  {id:'alisha-android',name:'Alisha Android',kind:'Android source · beta build',kindAr:'مصدر أندرويد · نسخة تجريبية',desc:'Kotlin / Jetpack Compose source of the Alisha Android app, with an arm64 beta build (Honor X6c).',descAr:'كود تطبيق Alisha لأندرويد بلغة Kotlin وJetpack Compose، مع نسخة تجريبية arm64 (Honor X6c).',lang:'Kotlin',private:false,repo:'https://github.com/magen-gillan/alisha-android',updated:'2026-08-14',files:['Kotlin','Jetpack Compose','Apache 2.0'],release:'v1.0.22-arm64 (beta)',download:'https://github.com/magen-gillan/alisha-android/releases/download/v1.0.22-arm64/Alisha-Honor-X6c-ARM64-release.apk',downloadLabel:'Alisha-Honor-X6c-ARM64-release.apk',
-    config:{type:'strings',path:'Android/src/app/src/main/res/values/strings.xml'},shots:['Android/src/app/src/main/assets/xr'],shotFallback:'Android/src/app/src/main/assets/xr/onboarding1.png'}
+/* Magen portfolio catalog. Repository names, current releases and features are verified against the four source repositories. */
+window.MAGEN_APPS = [
+  {
+    id: "magen-player",
+    repo: "magen-player",
+    name: "Magen Player",
+    category: { en: "VIDEO · OFFLINE FIRST", ar: "فيديو · يعمل دون إنترنت" },
+    description: {
+      en: "A local-first Android video player built on libmpv and Jetpack Compose. It finds and plays videos stored on your phone—without remote streaming or network access—inside a fast, customizable glass-style interface.",
+      ar: "مشغل فيديو محلي لأندرويد مبني على libmpv وJetpack Compose. يكتشف مقاطع هاتفك ويشغلها دون بث خارجي أو اتصال شبكي، ضمن واجهة زجاجية سريعة قابلة للتخصيص."
+    },
+    features: {
+      en: ["Powerful local playback with customizable gestures", "Folder browsing, local playlists and favorites", "Arabic subtitles, frame stepping and HDR-to-SDR", "Watched history and a dedicated Shorts mode"],
+      ar: ["تشغيل محلي قوي وإيماءات قابلة للتخصيص", "تصفح المجلدات وقوائم تشغيل ومفضلة محلية", "ترجمات عربية وتنقل بين الإطارات وتحويل HDR إلى SDR", "سجل مشاهدة ووضع مخصص للفيديوهات القصيرة"]
+    },
+    iconPath: "app/src/main/ic_launcher-web.png",
+    versionFallback: "v5.5.7",
+    apkFallback: "https://github.com/magen-gillan/magen-player/releases/download/v5.5.7/magen-player-arm64-v8a.apk",
+    releaseFallback: "https://github.com/magen-gillan/magen-player/releases/latest",
+    downloadNameFallback: "magen-player-arm64-v8a.apk",
+    stack: "libmpv · Jetpack Compose",
+    accent: "#58d8ef"
+  },
+  {
+    id: "magen-download",
+    repo: "Magen-download",
+    name: "Magen Download",
+    category: { en: "VIDEO & AUDIO · YT-DLP", ar: "فيديو وصوت · yt-dlp" },
+    description: {
+      en: "Download video or audio from thousands of supported sites with a clear Arabic/English Android interface. Start with the quick mode or open advanced controls for formats, quality, subtitles and audio conversion.",
+      ar: "نزّل الفيديو أو الصوت من آلاف المواقع المدعومة بواجهة أندرويد واضحة بالعربية والإنجليزية. ابدأ بالوضع السريع أو استخدم الخيارات المتقدمة للتحكم في الصيغة والجودة والترجمات وتحويل الصوت."
+    },
+    features: {
+      en: ["Share a link from another app to start", "Background progress and resumable downloads", "Simple and advanced modes", "MP3 conversion and subtitle merging; no ads or tracking"],
+      ar: ["شارك الرابط من أي تطبيق لبدء التنزيل", "تنزيلات بالخلفية قابلة للاستكمال مع إظهار التقدم", "وضع بسيط وآخر متقدم", "تحويل MP3 ودمج الترجمات دون إعلانات أو تتبع"]
+    },
+    iconPath: "app/src/main/res/mipmap-xxxhdpi/ic_launcher.png",
+    versionFallback: "v2.2.11",
+    apkFallback: "https://github.com/magen-gillan/Magen-download/releases/download/v2.2.11/Magen-download-2.2.11-arm64.apk",
+    releaseFallback: "https://github.com/magen-gillan/Magen-download/releases/latest",
+    downloadNameFallback: "Magen-download-2.2.11-arm64.apk",
+    stack: "yt-dlp · Android",
+    accent: "#9b8cff"
+  },
+  {
+    id: "magen-audio",
+    repo: "magen-audio",
+    name: "Magen Audio",
+    category: { en: "MUSIC · PERSONAL LIBRARY", ar: "موسيقى · مكتبتك الشخصية" },
+    description: {
+      en: "A lightweight, ad-free Android music player built with Kotlin, Jetpack Compose and Media3. It keeps a local music library quick to browse and neatly organized, with full Arabic and right-to-left support.",
+      ar: "مشغل موسيقى خفيف بلا إعلانات لأندرويد، مبني باستخدام Kotlin وJetpack Compose وMedia3. يجعل مكتبتك المحلية سريعة التصفح ومنظمة، مع دعم كامل للعربية واتجاه الكتابة من اليمين إلى اليسار."
+    },
+    features: {
+      en: ["Natural numeric sorting for tracks", "Custom folder artwork and clean folder names", "Reliable playback from the file manager", "Automatic library scanning, Arabic RTL and no tracking"],
+      ar: ["ترتيب رقمي طبيعي للمقاطع", "صور مخصصة للمجلدات وأسماء واضحة", "تشغيل موثوق عند الفتح من مدير الملفات", "فحص تلقائي للمكتبة ودعم RTL دون تتبع"]
+    },
+    iconPath: "app/src/main/res/mipmap-xxxhdpi/ic_launcher.png",
+    versionFallback: "v2.9.4",
+    apkFallback: "https://github.com/magen-gillan/magen-audio/releases/download/v2.9.4/magen-audio-v2.9.4.apk",
+    releaseFallback: "https://github.com/magen-gillan/magen-audio/releases/latest",
+    downloadNameFallback: "magen-audio-v2.9.4.apk",
+    stack: "Kotlin · Media3 · Compose",
+    accent: "#f4bc70"
+  },
+  {
+    id: "magen-wallpaper",
+    repo: "magen-wallpaper",
+    name: "Magen Wallpaper",
+    category: { en: "WALLPAPERS · AUTOMATION", ar: "خلفيات · أتمتة ذكية" },
+    description: {
+      en: "An anime wallpaper manager for Android that lets you build albums from your own image folders and decide when your home screen or lock screen changes—without keeping the app open or uploading your images.",
+      ar: "مدير خلفيات أنمي لأندرويد يتيح لك إنشاء ألبومات من مجلدات صورك واختيار موعد تغيير خلفية الشاشة الرئيسية أو القفل، دون إبقاء التطبيق مفتوحًا أو رفع صورك إلى أي خادم."
+    },
+    features: {
+      en: ["Multiple albums from folders on your phone", "Schedules, on-unlock changes and one-tap refresh", "Separate home-screen and lock-screen sources", "Fill/Fit/Stretch modes, shuffle and reboot rescheduling"],
+      ar: ["ألبومات متعددة من مجلدات الهاتف", "جدولة وتغيير عند فتح القفل أو بضغطة واحدة", "مصادر مستقلة للشاشة الرئيسية وشاشة القفل", "أنماط عرض متعددة وترتيب عشوائي واستئناف بعد التشغيل"]
+    },
+    iconPath: "app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp",
+    versionFallback: "v4.0.15",
+    apkFallback: "https://github.com/magen-gillan/magen-wallpaper/releases/download/v4.0.15/latest.apk",
+    releaseFallback: "https://github.com/magen-gillan/magen-wallpaper/releases/latest",
+    downloadNameFallback: "latest.apk",
+    stack: "Android · WallpaperManager",
+    accent: "#7ad7a1"
+  }
 ];
