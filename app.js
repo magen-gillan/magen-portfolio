@@ -256,9 +256,25 @@
     video.load();
   }
 
+  function detectBrowserLanguage() {
+    const languages = [navigator.language, ...(Array.isArray(navigator.languages) ? navigator.languages : [])].filter(Boolean);
+    const preferred = languages.find((language) => /^(ar|en)(?:[-_]|$)/i.test(language));
+    return preferred && /^ar(?:[-_]|$)/i.test(preferred) ? "ar" : "en";
+  }
+  function initialLanguage() {
+    const early = window.MAGEN_INITIAL_LANGUAGE;
+    if (early === "ar" || early === "en") return early;
+    try {
+      const saved = localStorage.getItem("magen-lang");
+      if (saved === "ar" || saved === "en") return saved;
+    } catch { /* browser storage may be unavailable */ }
+    return detectBrowserLanguage();
+  }
+
   function init() {
     document.documentElement.classList.add("has-motion");
-    try { state.lang = localStorage.getItem("magen-lang") || "en"; state.theme = localStorage.getItem("magen-theme") || "dark"; } catch { /* defaults */ }
+    state.lang = initialLanguage();
+    try { state.theme = localStorage.getItem("magen-theme") || "dark"; } catch { state.theme = "dark"; }
     applyTheme(state.theme, false);
     applyLanguage(state.lang, false);
     renderApps();

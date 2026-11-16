@@ -3,6 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    (() => {
+      const languages = [navigator.language, ...(Array.isArray(navigator.languages) ? navigator.languages : [])].filter(Boolean);
+      const preferred = languages.find((language) => /^(ar|en)(?:[-_]|$)/i.test(language));
+      let language = preferred && /^ar(?:[-_]|$)/i.test(preferred) ? "ar" : "en";
+      try {
+        const saved = localStorage.getItem("magen-lang");
+        if (saved === "ar" || saved === "en") language = saved;
+      } catch { /* browser storage may be unavailable */ }
+      document.documentElement.lang = language;
+      document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
+      window.MAGEN_INITIAL_LANGUAGE = language;
+    })();
+  </script>
   <meta name="theme-color" content="#07111d">
   <meta name="description" content="Magen Gillan — independent Android apps, thoughtfully built. Meet Alisha and explore Magen Player, Download, Audio and Wallpaper.">
   <meta property="og:title" content="Magen Gillan — Independent Android Apps">
