@@ -2,7 +2,7 @@
   "use strict";
   const COPY = {
     en: {
-      navHome: "Home", navApps: "Apps", navAbout: "About",
+      navHome: "Home", navApps: "Apps", navStats: "Downloads", navAbout: "About",
       heroEyebrow: "INDEPENDENT MAKER · ANDROID STUDIO", heroTitleA: "Small ideas.", heroTitleB: "Thoughtfully built.",
       heroLede: "I make useful Android tools that feel a little more human — shaped by curiosity, careful details, and the people who use them.",
       exploreApps: "Explore the apps", githubProfile: "Visit GitHub", heroFootnote: "A focused collection of tools for everyday Android.",
@@ -11,6 +11,9 @@
       metricApps: "ANDROID APPS", metricLanguages: "LANGUAGES", metricCare: "CARE IN EVERY DETAIL",
       appsEyebrow: "TOOLS FOR YOUR PHONE", appsTitle: "Meet the Magen apps.",
       appsIntro: "Each one has a clear job: play your media, bring a download within reach, keep music organized, or make your favorite wallpapers feel alive.",
+      statsEyebrow: "GITHUB RELEASE METRICS", statsTitle: "Downloads, straight from GitHub.", statsIntro: "An all-release count of APK file downloads across the four public repositories.",
+      statsTotalLabel: "TOTAL APK DOWNLOADS", statsSummaryDetail: "Combined across all four apps", statsSourceLabel: "GITHUB RELEASE APK COUNTS", statsChecking: "CHECKING GITHUB…", statsLive: "LIVE FROM GITHUB", statsSaved: "SHOWING SAVED COUNTS", statsPartial: "PARTIAL GITHUB DATA", statsUnavailable: "GITHUB DATA UNAVAILABLE",
+      statsDownloadLabel: "APK file downloads", statsNoData: "Download counts are temporarily unavailable.", statsOpenRepo: "View repository", statsFootnote: "Counts sum GitHub's download_count for every APK file attached to public releases. Separate APK variants have separate counters. These are file downloads, not unique people, app installs or active users. Values are cached in this browser for 30 minutes to stay within GitHub's public API limits.",
       liveRelease: "LATEST PUBLIC RELEASES", releaseChecking: "CHECKING GITHUB…", releaseLive: "LIVE FROM GITHUB", releaseFallback: "SHOWING SAVED RELEASE INFO",
       downloadLatest: "Download latest APK", sourceCode: "Source", details: "Details", allReleases: "All releases", appNumber: "APP",
       detailHighlights: "WHAT IT DOES WELL", screenshotsPending: "FRESH SCREENSHOTS PENDING", screenshotsPendingLong: "Updated screenshots of the current Magen interface will be added when they are provided.", appIconAlt: "App icon", techLabel: "BUILT WITH",
@@ -25,7 +28,7 @@
       mediaLabel: "ALISHA / MAGEN GUIDE"
     },
     ar: {
-      navHome: "الرئيسية", navApps: "التطبيقات", navAbout: "عن Magen",
+      navHome: "الرئيسية", navApps: "التطبيقات", navStats: "التنزيلات", navAbout: "عن Magen",
       heroEyebrow: "صانع مستقل · تطبيقات أندرويد", heroTitleA: "أفكار صغيرة.", heroTitleB: "تنفيذ بعناية.",
       heroLede: "أصنع أدوات أندرويد مفيدة وقريبة من الناس، بتصميمها بدافع الفضول والاهتمام بالتفاصيل ومن يستخدمها.",
       exploreApps: "اكتشف التطبيقات", githubProfile: "GitHub", heroFootnote: "مجموعة مركزة من الأدوات اليومية لأندرويد.",
@@ -34,6 +37,9 @@
       metricApps: "تطبيقات أندرويد", metricLanguages: "لغتان", metricCare: "عناية بكل تفصيل",
       appsEyebrow: "أدوات لهاتفك", appsTitle: "تعرّف إلى تطبيقات Magen.",
       appsIntro: "لكل تطبيق مهمة واضحة: تشغيل وسائطك، وتنزيل ما تحتاجه، وتنظيم موسيقاك، أو جعل خلفياتك المفضلة أكثر حيوية.",
+      statsEyebrow: "إحصاءات إصدارات GitHub", statsTitle: "التنزيلات من GitHub مباشرة.", statsIntro: "مجموع تنزيلات ملفات APK عبر الإصدارات العامة للمستودعات الأربعة.",
+      statsTotalLabel: "إجمالي تنزيلات ملفات APK", statsSummaryDetail: "مجموع التطبيقات الأربعة", statsSourceLabel: "عدادات ملفات APK في GitHub Releases", statsChecking: "جارٍ التحقق من GitHub…", statsLive: "مباشر من GitHub", statsSaved: "عرض أعداد محفوظة", statsPartial: "بيانات GitHub جزئية", statsUnavailable: "بيانات GitHub غير متاحة",
+      statsDownloadLabel: "تنزيلات ملفات APK", statsNoData: "تعذر جلب عدادات التنزيل مؤقتًا.", statsOpenRepo: "فتح المستودع", statsFootnote: "تجمع الأرقام download_count الذي يعرضه GitHub لكل ملفات APK المرفقة بالإصدارات العامة. لكل ملف أو نسخة بديلة عداد مستقل. هذه تنزيلات للملفات وليست عدد الأشخاص أو التثبيتات أو المستخدمين النشطين. تحفظ القيم في هذا المتصفح 30 دقيقة لمراعاة حدود واجهة GitHub العامة.",
       liveRelease: "أحدث الإصدارات العامة", releaseChecking: "جارٍ التحقق من GitHub…", releaseLive: "مباشر من GitHub", releaseFallback: "عرض بيانات الإصدار المحفوظة",
       downloadLatest: "تنزيل أحدث APK", sourceCode: "المصدر", details: "التفاصيل", allReleases: "كل الإصدارات", appNumber: "تطبيق",
       detailHighlights: "أبرز ما يقدمه", screenshotsPending: "بانتظار لقطات حديثة", screenshotsPendingLong: "ستُضاف لقطات جديدة تعكس واجهة Magen الحالية عند تزويدنا بها.", appIconAlt: "أيقونة التطبيق", techLabel: "مبني باستخدام",
@@ -50,7 +56,7 @@
   };
   const CACHE_KEY = "magen-atlas-github-v2";
   const CACHE_TTL = 30 * 60 * 1000;
-  const state = { lang: "en", theme: "dark", releases: {}, dialogId: null, releaseFailures: null };
+  const state = { lang: "en", theme: "dark", releases: {}, downloadStats: {}, dialogId: null, releaseFailures: null, releaseCacheHits: 0 };
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
   const esc = (value) => String(value ?? "").replace(/[&<>"']/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch]));
@@ -67,6 +73,7 @@
     const cached = savedCache[appId]?.[key];
     return cached && Date.now() - cached.savedAt < CACHE_TTL ? cached.value : null;
   }
+  function readAnyAppCache(appId, key) { return savedCache[appId]?.[key]?.value || null; }
   function setAppCache(appId, key, value) {
     savedCache[appId] ||= {};
     savedCache[appId][key] = { savedAt: Date.now(), value };
@@ -114,6 +121,48 @@
     observeReveals(grid);
   }
 
+  function formatCount(value) {
+    return new Intl.NumberFormat(state.lang === "ar" ? "ar" : "en").format(Math.max(0, Number(value) || 0));
+  }
+  function renderDownloadStats() {
+    const grid = $("#downloadStatsGrid");
+    if (!grid) return;
+    const records = appList.map((app) => state.downloadStats[app.id]);
+    const complete = records.length > 0 && records.every((item) => Number.isFinite(item?.totalDownloads));
+    const total = $("#downloadStatsTotal");
+    if (total) total.textContent = complete ? formatCount(records.reduce((sum, item) => sum + item.totalDownloads, 0)) : "—";
+    const status = $("#downloadStatsStatus");
+    if (status) {
+      const sources = records.map((item) => item?.source || "loading");
+      const key = sources.every((source) => source === "live") ? "statsLive"
+        : sources.some((source) => source === "loading") ? "statsChecking"
+        : sources.some((source) => source === "live") ? "statsPartial"
+        : sources.some((source) => source === "saved") ? "statsSaved" : "statsUnavailable";
+      status.textContent = t(key);
+      status.classList.toggle("is-live", key === "statsLive");
+      status.classList.toggle("is-fallback", key === "statsSaved" || key === "statsPartial");
+    }
+    grid.innerHTML = appList.map((app, index) => {
+      const stats = state.downloadStats[app.id] || { source: "loading" };
+      const hasCount = Number.isFinite(stats.totalDownloads);
+      const statusText = stats.source === "live" ? t("statsLive") : stats.source === "saved" ? t("statsSaved") : stats.source === "error" ? t("statsUnavailable") : t("statsChecking");
+      const statusClass = stats.source === "live" ? "is-live" : stats.source === "saved" || stats.source === "error" ? "is-fallback" : "";
+      const meta = hasCount
+        ? (state.lang === "ar" ? `${formatCount(stats.apkAssetCount)} ملف APK · ${formatCount(stats.releaseCount)} إصدار عام` : `${formatCount(stats.apkAssetCount)} APK assets · ${formatCount(stats.releaseCount)} public releases`)
+        : t(stats.source === "error" ? "statsNoData" : "statsChecking");
+      const repoUrl = `https://github.com/magen-gillan/${encodeURIComponent(app.repo)}`;
+      return `<article class="download-stat-card reveal" style="--app-accent:${esc(app.accent)}">
+        <div class="download-stat-top"><span class="mono-label">${t("appNumber")} / 0${index + 1}</span><span class="download-stat-source ${statusClass}">${esc(statusText)}</span></div>
+        <h3>${esc(app.name)}</h3>
+        <div class="download-stat-value" aria-label="${esc(hasCount ? formatCount(stats.totalDownloads) : t("statsNoData"))}">${esc(hasCount ? formatCount(stats.totalDownloads) : "—")}</div>
+        <p class="download-stat-label">${esc(t("statsDownloadLabel"))}</p>
+        <div class="download-stat-meta">${esc(meta)}</div>
+        <a class="download-stat-repo" href="${esc(repoUrl)}" target="_blank" rel="noreferrer">${esc(t("statsOpenRepo"))} <span aria-hidden="true">↗</span></a>
+      </article>`;
+    }).join("");
+    observeReveals(grid);
+  }
+
   function renderDialog(app) {
     const rel = currentRelease(app);
     const features = app.features[state.lang].map((item) => `<li>${esc(item)}</li>`).join("");
@@ -148,33 +197,72 @@
       || apks.find((asset) => /^latest\.apk$/i.test(asset.name))
       || apks[0] || null;
   }
-  async function loadRelease(app) {
-    const cached = readAppCache(app.id, "release");
-    if (cached) state.releases[app.id] = cached;
-    const release = await fetchJson(`https://api.github.com/repos/magen-gillan/${encodeURIComponent(app.repo)}/releases/latest`);
-    const asset = selectApk(release.assets);
-    if (!asset) throw new Error(`No APK in latest release for ${app.repo}`);
-    const data = {
-      tag_name: release.tag_name || app.versionFallback,
-      html_url: release.html_url || app.releaseFallback,
-      published_at: release.published_at || "",
-      asset: { name: asset.name, browser_download_url: asset.browser_download_url }
-    };
-    state.releases[app.id] = data;
-    setAppCache(app.id, "release", data);
+  async function fetchAllReleases(app) {
+    const releases = [];
+    for (let page = 1; ; page += 1) {
+      const batch = await fetchJson(`https://api.github.com/repos/magen-gillan/${encodeURIComponent(app.repo)}/releases?per_page=100&page=${page}`);
+      if (!Array.isArray(batch)) throw new Error(`Unexpected releases response for ${app.repo}`);
+      releases.push(...batch);
+      if (batch.length < 100) return releases;
+    }
+  }
+  async function loadRepositoryData(app) {
+    const freshRelease = readAppCache(app.id, "release");
+    const freshStats = readAppCache(app.id, "downloads");
+    const savedRelease = freshRelease || readAnyAppCache(app.id, "release");
+    const savedStats = freshStats || readAnyAppCache(app.id, "downloads");
+    if (savedRelease) state.releases[app.id] = savedRelease;
+    state.downloadStats[app.id] = savedStats ? { ...savedStats, source: "saved" } : { source: "loading" };
     renderApps();
-    if (state.dialogId === app.id) renderDialog(app);
+    renderDownloadStats();
+    if (freshRelease && freshStats) { state.releaseCacheHits += 1; return; }
+    try {
+      const releases = await fetchAllReleases(app);
+      const published = releases.filter((release) => !release.draft);
+      const latest = published.find((release) => !release.prerelease) || published[0];
+      const asset = latest && selectApk(latest.assets);
+      if (!latest || !asset) throw new Error(`No published APK release for ${app.repo}`);
+      const releaseData = {
+        tag_name: latest.tag_name || app.versionFallback,
+        html_url: latest.html_url || app.releaseFallback,
+        published_at: latest.published_at || "",
+        asset: { name: asset.name, browser_download_url: asset.browser_download_url }
+      };
+      let totalDownloads = 0;
+      let apkAssetCount = 0;
+      for (const release of published) {
+        for (const releaseAsset of release.assets || []) {
+          if (/\.apk$/i.test(releaseAsset.name || "")) {
+            apkAssetCount += 1;
+            const count = Number(releaseAsset.download_count);
+            if (Number.isFinite(count) && count > 0) totalDownloads += count;
+          }
+        }
+      }
+      const statsData = { totalDownloads, apkAssetCount, releaseCount: published.length };
+      state.releases[app.id] = releaseData;
+      state.downloadStats[app.id] = { ...statsData, source: "live" };
+      setAppCache(app.id, "release", releaseData);
+      setAppCache(app.id, "downloads", statsData);
+      renderApps();
+      renderDownloadStats();
+      if (state.dialogId === app.id) renderDialog(app);
+    } catch (error) {
+      if (!state.downloadStats[app.id] || state.downloadStats[app.id].source === "loading") state.downloadStats[app.id] = { source: "error" };
+      renderDownloadStats();
+      throw error;
+    }
   }
   async function loadGitHubData() {
-    const results = await Promise.allSettled(appList.map((app) => loadRelease(app)));
+    const results = await Promise.allSettled(appList.map((app) => loadRepositoryData(app)));
     state.releaseFailures = results.filter((item) => item.status === "rejected").length;
     const status = $("#releaseStatus");
     if (status) {
-      const failed = state.releaseFailures !== 0;
-      status.textContent = t(failed ? "releaseFallback" : "releaseLive");
-      status.classList.toggle("is-live", !failed);
-      status.classList.toggle("is-fallback", failed);
-      status.title = failed ? t("apiUnavailable") : "";
+      const fallback = state.releaseFailures !== 0 || state.releaseCacheHits > 0;
+      status.textContent = t(fallback ? "releaseFallback" : "releaseLive");
+      status.classList.toggle("is-live", !fallback);
+      status.classList.toggle("is-fallback", fallback);
+      status.title = state.releaseFailures ? t("apiUnavailable") : "";
     }
   }
 
@@ -188,11 +276,11 @@
     });
     const releaseStatus = $("#releaseStatus");
     if (releaseStatus && state.releaseFailures !== null) {
-      const failed = state.releaseFailures !== 0;
-      releaseStatus.textContent = t(failed ? "releaseFallback" : "releaseLive");
-      releaseStatus.classList.toggle("is-live", !failed);
-      releaseStatus.classList.toggle("is-fallback", failed);
-      releaseStatus.title = failed ? t("apiUnavailable") : "";
+      const fallback = state.releaseFailures !== 0 || state.releaseCacheHits > 0;
+      releaseStatus.textContent = t(fallback ? "releaseFallback" : "releaseLive");
+      releaseStatus.classList.toggle("is-live", !fallback);
+      releaseStatus.classList.toggle("is-fallback", fallback);
+      releaseStatus.title = state.releaseFailures ? t("apiUnavailable") : "";
     }
     const languageButton = $("#languageToggle");
     if (languageButton) { languageButton.innerHTML = `${esc(t("languageSwitch"))} <span aria-hidden="true">↗</span>`; languageButton.setAttribute("aria-label", t("languageAria")); }
@@ -208,6 +296,7 @@
     const desc = $("meta[name='description']");
     if (desc) desc.content = state.lang === "ar" ? "Magen Gillan — تطبيقات أندرويد مفيدة بعناية. تعرّف إلى أليشا وتطبيقات Magen Player وDownload وAudio وWallpaper." : "Magen Gillan — independent Android apps, thoughtfully built. Meet Alisha and explore Magen Player, Download, Audio and Wallpaper.";
     renderApps();
+    renderDownloadStats();
     if (state.dialogId) { const app = appList.find((item) => item.id === state.dialogId); if (app) renderDialog(app); }
     if (persist) { try { localStorage.setItem("magen-lang", state.lang); } catch { /* ignore unavailable storage */ } }
   }
@@ -278,6 +367,7 @@
     applyTheme(state.theme, false);
     applyLanguage(state.lang, false);
     renderApps();
+    renderDownloadStats();
     observeReveals();
     configureAlisha();
     const alishaButton = $("#alishaInteract");
