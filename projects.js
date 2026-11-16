@@ -14,8 +14,8 @@ window.MAGEN_APPS = [
       ar: ["تشغيل محلي قوي وإيماءات قابلة للتخصيص", "تصفح المجلدات وقوائم تشغيل ومفضلة محلية", "ترجمات عربية وتنقل بين الإطارات وتحويل HDR إلى SDR", "سجل مشاهدة ووضع مخصص للفيديوهات القصيرة"]
     },
     iconPath: "app/src/main/ic_launcher-web.png",
-    versionFallback: "v5.5.7",
-    apkFallback: "https://github.com/magen-gillan/magen-player/releases/download/v5.5.7/magen-player-arm64-v8a.apk",
+    versionFallback: "v5.5.10",
+    apkFallback: "https://github.com/magen-gillan/magen-player/releases/download/v5.5.10/magen-player-arm64-v8a.apk",
     releaseFallback: "https://github.com/magen-gillan/magen-player/releases/latest",
     downloadNameFallback: "magen-player-arm64-v8a.apk",
     stack: "libmpv · Jetpack Compose",
@@ -56,10 +56,10 @@ window.MAGEN_APPS = [
       ar: ["ترتيب رقمي طبيعي للمقاطع", "صور مخصصة للمجلدات وأسماء واضحة", "تشغيل موثوق عند الفتح من مدير الملفات", "فحص تلقائي للمكتبة ودعم RTL دون تتبع"]
     },
     iconPath: "app/src/main/res/mipmap-xxxhdpi/ic_launcher.png",
-    versionFallback: "v2.9.4",
-    apkFallback: "https://github.com/magen-gillan/magen-audio/releases/download/v2.9.4/magen-audio-v2.9.4.apk",
+    versionFallback: "v2.9.10",
+    apkFallback: "https://github.com/magen-gillan/magen-audio/releases/download/v2.9.10/latest.apk",
     releaseFallback: "https://github.com/magen-gillan/magen-audio/releases/latest",
-    downloadNameFallback: "magen-audio-v2.9.4.apk",
+    downloadNameFallback: "latest.apk",
     stack: "Kotlin · Media3 · Compose",
     accent: "#f4bc70"
   },
