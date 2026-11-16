@@ -77,8 +77,8 @@ window.MAGEN_APPS = [
       ar: ["ألبومات متعددة من مجلدات الهاتف", "جدولة وتغيير عند فتح القفل أو بضغطة واحدة", "مصادر مستقلة للشاشة الرئيسية وشاشة القفل", "أنماط عرض متعددة وترتيب عشوائي واستئناف بعد التشغيل"]
     },
     iconPath: "app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp",
-    versionFallback: "v4.0.15",
-    apkFallback: "https://github.com/magen-gillan/magen-wallpaper/releases/download/v4.0.15/latest.apk",
+    versionFallback: "v4.0.16",
+    apkFallback: "https://github.com/magen-gillan/magen-wallpaper/releases/download/v4.0.16/latest.apk",
     releaseFallback: "https://github.com/magen-gillan/magen-wallpaper/releases/latest",
     downloadNameFallback: "latest.apk",
     stack: "Android · WallpaperManager",
