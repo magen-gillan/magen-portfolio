@@ -41,6 +41,7 @@
   <link rel="stylesheet" href="styles.css">
   <script defer src="projects.js"></script>
   <script defer src="app.js"></script>
+  <script type="module" src="/src/main.jsx"></script>
 </head>
 <body>
   <div class="ambient ambient--top" aria-hidden="true"></div>
@@ -76,14 +77,8 @@
   </header>
 
   <main>
-    <section class="hero depth-hero shell" id="home" aria-labelledby="depthFieldTitle">
-      <div class="depth-field" id="depthField">
-        <h1 class="sr-only" id="depthFieldTitle" data-i18n="depthFieldTitle">Magen visual depth field</h1>
-        <div class="depth-field-space" id="depthFieldSpace" aria-hidden="true"></div>
-        <div class="depth-field-halo" aria-hidden="true"></div>
-        <div class="depth-field-center" aria-hidden="true"><span>M / G</span></div>
-        <div class="depth-field-caption" aria-hidden="true"><span data-i18n="depthFieldKicker">MAGEN / DEPTH FIELD</span><small data-i18n="depthFieldHint">SIX IDEAS · ONE ORBIT</small></div>
-      </div>
+    <section class="hero react-depth-hero shell" id="home" aria-label="Magen Gillan Depth Field">
+      <div id="depthFieldReact"></div>
       <a class="scroll-cue" href="#apps" aria-label="Scroll to apps"><span class="scroll-line"></span><span data-i18n="scrollCue">SCROLL TO EXPLORE</span></a>
     </section>
 

@@ -2,7 +2,7 @@
 
 **الموقع التعريفي:** [magen-gillan.github.io/magen-portfolio](https://magen-gillan.github.io/magen-portfolio/)
 
-صفحة تعريف ساكنة ومتجاوبة لمجموعة Magen، بالعربية والإنجليزية، مبنية بـ HTML وCSS وJavaScript دون إطار عمل أو خادم أو قاعدة بيانات.
+صفحة تعريف ساكنة ومتجاوبة لمجموعة Magen، بالعربية والإنجليزية، تُبنى عبر Vite مع مكوّن ReactDrops الأصلي `DepthField` في بداية الصفحة، بينما تبقى أقسام المحتوى وإحصاءات GitHub خفيفة وتعمل دون خادم أو قاعدة بيانات.
 
 ## التطبيقات المعروضة
 
@@ -21,20 +21,21 @@
 
 ## البنية والتشغيل
 
-- `index.html` — محتوى الصفحة والبيانات الوصفية الأساسية.
+- `index.html` — محتوى الصفحة والبيانات الوصفية الأساسية ونقطة تركيب React.
 - `styles.css` — التصميم المتجاوب والمظهر الداكن/الفاتح والحركات.
 - `projects.js` — قائمة التطبيقات الأربعة وبيانات وروابط احتياطية لأحدث APK.
 - `app.js` — اللغات وRTL، التفاعلات، أليشا، وقراءة إصدارات GitHub.
-- `assets/alisha-welcome.mp4` — أصل أليشا المتحرك المقدم من المستخدم.
-- `assets/alisha-poster.webp` — ملصق الفيديو وصورة المشاركة.
-- `assets/magen-mark.jpg` و`assets/alisha-guide.png` — الهوية البصرية وصورة أليشا.
-- `assets/magen-player.jpg` و`assets/magen-download.jpg` و`assets/magen-audio.jpg` و`assets/magen-wallpaper.jpg` — صور التطبيقات المرسلة من المستخدم.
-- `robots.txt` و`sitemap.xml` — إعدادات الزحف وخريطة الموقع.
+- `src/main.jsx` — تركيب React وتهيئة `DepthField` بعنوان `Magen Gillan` وإعداداته المطلوبة.
+- `src/components/depth-field.*` — ملفات المكوّن الأصلي المثبت عبر ReactDrops/shadcn، بما فيها renderer وmodel وCSS.
+- `public/assets/` — أصول أليشا والشعار والصور الست المستخدمة في المعرض والمكوّن.
+- `public/robots.txt` و`public/sitemap.xml` — إعدادات الزحف وخريطة الموقع.
+- `package.json` و`vite.config.js` — أوامر React/Vite والبناء المناسب لمسار GitHub Pages.
 
-لتشغيل الملفات محليًا من جذر المستودع:
+لتشغيل الموقع محليًا من جذر المستودع:
 
 ```bash
-python3 -m http.server 8000
+npm install
+npm run dev
 ```
 
-ينشر GitHub Pages الموقع من الفرع `main` والجذر `/` على الرابط أعلاه. يحتوي `.github/workflows/pages.yml` على مسار النشر الحالي.
+لإنشاء نسخة النشر استخدم `npm run build`. ينشر GitHub Pages مجلد `dist` من الفرع `main` على الرابط أعلاه؛ ويحتوي `.github/workflows/pages.yml` على مسار التثبيت والبناء والنشر.
