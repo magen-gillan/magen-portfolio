@@ -3,7 +3,7 @@
   const COPY = {
     en: {
       navHome: "Home", navApps: "Apps", navVisuals: "Visuals", navStats: "Downloads", navAbout: "About",
-      heroEyebrow: "INDEPENDENT MAKER · ANDROID STUDIO", heroTitleA: "Small ideas.", heroTitleB: "Thoughtfully built.",
+      heroEyebrow: "INDEPENDENT MAKER · ANDROID STUDIO", heroTitleA: "Small ideas.", heroTitleB: "Thoughtfully built.", depthFieldTitle: "Magen visual depth field", depthFieldKicker: "MAGEN / DEPTH FIELD", depthFieldHint: "SIX IDEAS · ONE ORBIT",
       heroLede: "I make useful Android tools that feel a little more human — shaped by curiosity, careful details, and the people who use them.",
       exploreApps: "Explore the apps", githubProfile: "Visit GitHub", heroFootnote: "A focused collection of tools for everyday Android.",
       alishaName: "Alisha", alishaRole: "Your guide to Magen", alishaOpen: "Meet Alisha", alishaClose: "Close Alisha's note", alishaPrompt: "TAP", alishaMessage: "Hi, I’m Alisha. I can guide you to the Magen app for video, downloads, music or wallpapers.", alishaAction: "Explore the four apps", liveLabel: "HERE", scrollCue: "SCROLL TO EXPLORE",
@@ -29,7 +29,7 @@
     },
     ar: {
       navHome: "الرئيسية", navApps: "التطبيقات", navVisuals: "الصور", navStats: "التنزيلات", navAbout: "عن Magen",
-      heroEyebrow: "صانع مستقل · تطبيقات أندرويد", heroTitleA: "أفكار صغيرة.", heroTitleB: "تنفيذ بعناية.",
+      heroEyebrow: "صانع مستقل · تطبيقات أندرويد", heroTitleA: "أفكار صغيرة.", heroTitleB: "تنفيذ بعناية.", depthFieldTitle: "المجال البصري العميق لـ Magen", depthFieldKicker: "MAGEN / مجال بصري", depthFieldHint: "ست أفكار · مدار واحد",
       heroLede: "أصنع أدوات أندرويد مفيدة وقريبة من الناس، بتصميمها بدافع الفضول والاهتمام بالتفاصيل ومن يستخدمها.",
       exploreApps: "اكتشف التطبيقات", githubProfile: "GitHub", heroFootnote: "مجموعة مركزة من الأدوات اليومية لأندرويد.",
       alishaName: "أليشا", alishaRole: "دليلتك إلى Magen", alishaOpen: "تعرّف إلى أليشا", alishaClose: "إغلاق رسالة أليشا", alishaPrompt: "اضغط", alishaMessage: "مرحبًا، أنا أليشا. أساعدك في العثور على تطبيق Magen المناسب للفيديو أو التنزيل أو الموسيقى أو الخلفيات.", alishaAction: "استكشف التطبيقات الأربعة", liveLabel: "معك", scrollCue: "تابع لاكتشاف المزيد",
@@ -334,6 +334,77 @@
     }, { threshold: .08, rootMargin: "0px 0px -28px 0px" });
     items.forEach((item, index) => { item.dataset.observed = "true"; item.style.transitionDelay = `${Math.min(index % 2, 1) * 80}ms`; observer.observe(item); });
   }
+  function initDepthField() {
+    const root = $("#depthField");
+    const space = $("#depthFieldSpace");
+    if (!root || !space) return;
+    const imagePaths = [
+      "assets/magen-mark.jpg",
+      "assets/alisha-guide.png",
+      "assets/magen-audio.jpg",
+      "assets/magen-download.jpg",
+      "assets/magen-player.jpg",
+      "assets/magen-wallpaper.jpg"
+    ];
+    const count = 36;
+    const items = Array.from({ length: count }, (_, index) => {
+      const image = document.createElement("img");
+      image.className = "depth-field-image";
+      image.src = imagePaths[index % imagePaths.length];
+      image.alt = "";
+      image.loading = index < 6 ? "eager" : "lazy";
+      image.decoding = "async";
+      space.appendChild(image);
+      return image;
+    });
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let pointerX = 0;
+    let pointerY = 0;
+    let targetX = 0;
+    let targetY = 0;
+    let lastScroll = window.scrollY;
+    let scrollMomentum = 0;
+    const start = performance.now();
+    const render = (now) => {
+      const elapsed = now - start;
+      const seconds = elapsed / 1000;
+      const entry = Math.min(1, Math.max(0, (elapsed - 80) / 2800));
+      const entryEase = 1 - Math.pow(1 - entry, 3);
+      const rect = root.getBoundingClientRect();
+      const size = Math.min(rect.width, rect.height);
+      const spread = Math.min(size * .43, 390);
+      pointerX += (targetX - pointerX) * .055;
+      pointerY += (targetY - pointerY) * .055;
+      scrollMomentum *= .94;
+      const rotation = reducedMotion ? -.7 : seconds * .192 + scrollMomentum;
+      items.forEach((image, index) => {
+        const progress = index / (count - 1);
+        const angle = progress * Math.PI * 4.65 - rotation;
+        const radius = 28 + progress * spread;
+        const x = Math.cos(angle) * radius * 1.22 + pointerX * (1 - progress) * 22;
+        const y = Math.sin(angle) * radius * .54 + pointerY * (1 - progress) * 18;
+        const z = (1 - progress) * 360 - progress * 210;
+        const scale = (.52 + (1 - progress) * .58) * (.35 + entryEase * .65);
+        const opacity = Math.min(1, .18 + entryEase * .82) * (progress > .92 ? .45 : 1);
+        image.style.transform = `translate3d(calc(-50% + ${x.toFixed(2)}px), calc(-50% + ${y.toFixed(2)}px), ${z.toFixed(2)}px) rotateZ(${(angle * 18 / Math.PI).toFixed(2)}deg) scale(${scale.toFixed(3)})`;
+        image.style.opacity = opacity.toFixed(3);
+        image.style.zIndex = String(Math.round(500 - progress * 400));
+      });
+      if (!reducedMotion) window.requestAnimationFrame(render);
+    };
+    root.addEventListener("pointermove", (event) => {
+      const rect = root.getBoundingClientRect();
+      targetX = (event.clientX - rect.left) / rect.width * 2 - 1;
+      targetY = (event.clientY - rect.top) / rect.height * 2 - 1;
+    });
+    root.addEventListener("pointerleave", () => { targetX = 0; targetY = 0; });
+    window.addEventListener("scroll", () => {
+      const delta = window.scrollY - lastScroll;
+      lastScroll = window.scrollY;
+      scrollMomentum += Math.max(-.06, Math.min(.06, delta * .0012));
+    }, { passive: true });
+    render(start + (reducedMotion ? 2800 : 0));
+  }
   function configureAlisha() {
     const video = $("#alishaVideo");
     const source = $("#alishaSource");
@@ -384,28 +455,31 @@
     renderApps();
     renderDownloadStats();
     observeReveals();
+    initDepthField();
     configureAlisha();
     const alishaButton = $("#alishaInteract");
     const alishaMessage = $("#alishaMessage");
-    alishaButton.addEventListener("click", () => {
-      const open = alishaButton.getAttribute("aria-expanded") !== "true";
-      alishaButton.setAttribute("aria-expanded", String(open));
-      alishaButton.setAttribute("aria-label", t(open ? "alishaClose" : "alishaOpen"));
-      alishaMessage.hidden = !open;
-    });
-    $("#alishaAction").addEventListener("click", () => {
-      alishaMessage.hidden = true;
-      alishaButton.setAttribute("aria-expanded", "false");
-      alishaButton.setAttribute("aria-label", t("alishaOpen"));
-    });
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && !alishaMessage.hidden) {
+    if (alishaButton && alishaMessage) {
+      alishaButton.addEventListener("click", () => {
+        const open = alishaButton.getAttribute("aria-expanded") !== "true";
+        alishaButton.setAttribute("aria-expanded", String(open));
+        alishaButton.setAttribute("aria-label", t(open ? "alishaClose" : "alishaOpen"));
+        alishaMessage.hidden = !open;
+      });
+      $("#alishaAction")?.addEventListener("click", () => {
         alishaMessage.hidden = true;
         alishaButton.setAttribute("aria-expanded", "false");
         alishaButton.setAttribute("aria-label", t("alishaOpen"));
-        alishaButton.focus();
-      }
-    });
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && !alishaMessage.hidden) {
+          alishaMessage.hidden = true;
+          alishaButton.setAttribute("aria-expanded", "false");
+          alishaButton.setAttribute("aria-label", t("alishaOpen"));
+          alishaButton.focus();
+        }
+      });
+    }
     $("#yearNow").textContent = String(new Date().getFullYear());
     $("#languageToggle").addEventListener("click", () => applyLanguage(state.lang === "en" ? "ar" : "en"));
     $("#modeToggle").addEventListener("click", () => applyTheme(state.theme === "dark" ? "light" : "dark"));
