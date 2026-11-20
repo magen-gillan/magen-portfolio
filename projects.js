@@ -19,7 +19,9 @@ window.MAGEN_APPS = [
     releaseFallback: "https://github.com/magen-gillan/magen-player/releases/latest",
     downloadNameFallback: "magen-player-arm64-v8a.apk",
     stack: "libmpv · Jetpack Compose",
-    accent: "#58d8ef"
+    accent: "#58d8ef",
+    mediaPath: "assets/magen-player.jpg",
+    mediaAlt: { en: "Magen Player app artwork", ar: "صورة تطبيق Magen Player" }
   },
   {
     id: "magen-download",
@@ -40,7 +42,9 @@ window.MAGEN_APPS = [
     releaseFallback: "https://github.com/magen-gillan/Magen-download/releases/latest",
     downloadNameFallback: "Magen-download-2.2.11-arm64.apk",
     stack: "yt-dlp · Android",
-    accent: "#9b8cff"
+    accent: "#9b8cff",
+    mediaPath: "assets/magen-download.jpg",
+    mediaAlt: { en: "Magen Download app artwork", ar: "صورة تطبيق Magen Download" }
   },
   {
     id: "magen-audio",
@@ -61,7 +65,9 @@ window.MAGEN_APPS = [
     releaseFallback: "https://github.com/magen-gillan/magen-audio/releases/latest",
     downloadNameFallback: "latest.apk",
     stack: "Kotlin · Media3 · Compose",
-    accent: "#f4bc70"
+    accent: "#f4bc70",
+    mediaPath: "assets/magen-audio.jpg",
+    mediaAlt: { en: "Magen Audio app artwork", ar: "صورة تطبيق Magen Audio" }
   },
   {
     id: "magen-wallpaper",
@@ -82,6 +88,8 @@ window.MAGEN_APPS = [
     releaseFallback: "https://github.com/magen-gillan/magen-wallpaper/releases/latest",
     downloadNameFallback: "latest.apk",
     stack: "Android · WallpaperManager",
-    accent: "#7ad7a1"
+    accent: "#7ad7a1",
+    mediaPath: "assets/magen-wallpaper.jpg",
+    mediaAlt: { en: "Magen Wallpaper app artwork", ar: "صورة تطبيق Magen Wallpaper" }
   }
 ];

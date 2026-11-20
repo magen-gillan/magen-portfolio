@@ -2,12 +2,12 @@
   "use strict";
   const COPY = {
     en: {
-      navHome: "Home", navApps: "Apps", navStats: "Downloads", navAbout: "About",
+      navHome: "Home", navApps: "Apps", navVisuals: "Visuals", navStats: "Downloads", navAbout: "About",
       heroEyebrow: "INDEPENDENT MAKER · ANDROID STUDIO", heroTitleA: "Small ideas.", heroTitleB: "Thoughtfully built.",
       heroLede: "I make useful Android tools that feel a little more human — shaped by curiosity, careful details, and the people who use them.",
       exploreApps: "Explore the apps", githubProfile: "Visit GitHub", heroFootnote: "A focused collection of tools for everyday Android.",
       alishaName: "Alisha", alishaRole: "Your guide to Magen", alishaOpen: "Meet Alisha", alishaClose: "Close Alisha's note", alishaPrompt: "TAP", alishaMessage: "Hi, I’m Alisha. I can guide you to the Magen app for video, downloads, music or wallpapers.", alishaAction: "Explore the four apps", liveLabel: "HERE", scrollCue: "SCROLL TO EXPLORE",
-      signalLabel: "THE MAGEN ECOSYSTEM", signalText: "Four focused apps. One thoughtful point of view.",
+      signalLabel: "THE MAGEN ECOSYSTEM", signalText: "Four focused apps. One thoughtful point of view.", visualsEyebrow: "THE WORK IN VIEW", visualsTitle: "A closer look at the Magen world.", visualsIntro: "The identity, guide, and four app marks that make this small Android ecosystem feel like one place.",
       metricApps: "ANDROID APPS", metricLanguages: "LANGUAGES", metricCare: "CARE IN EVERY DETAIL",
       appsEyebrow: "TOOLS FOR YOUR PHONE", appsTitle: "Meet the Magen apps.",
       appsIntro: "Each one has a clear job: play your media, bring a download within reach, keep music organized, or make your favorite wallpapers feel alive.",
@@ -16,7 +16,7 @@
       statsDownloadLabel: "APK file downloads", statsNoData: "Download counts are temporarily unavailable.", statsOpenRepo: "View repository", statsFootnote: "Counts sum GitHub's download_count for every APK file attached to public releases. Separate APK variants have separate counters. These are file downloads, not unique people, app installs or active users. Values are cached in this browser for 30 minutes to stay within GitHub's public API limits.",
       liveRelease: "LATEST PUBLIC RELEASES", releaseChecking: "CHECKING GITHUB…", releaseLive: "LIVE FROM GITHUB", releaseFallback: "SHOWING SAVED RELEASE INFO",
       downloadLatest: "Download latest APK", sourceCode: "Source", details: "Details", allReleases: "All releases", appNumber: "APP",
-      detailHighlights: "WHAT IT DOES WELL", screenshotsPending: "FRESH SCREENSHOTS PENDING", screenshotsPendingLong: "Updated screenshots of the current Magen interface will be added when they are provided.", appIconAlt: "App icon", techLabel: "BUILT WITH",
+      detailHighlights: "WHAT IT DOES WELL", screenshotsPending: "PROVIDED APP VISUAL", screenshotsPendingLong: "The supplied visual is shown here as part of this app's identity.", appIconAlt: "App icon", mediaLabel: "APP VISUAL", brandVisualLabel: "BRAND / IDENTITY", brandVisualName: "Magen Gillan", guideVisualLabel: "GUIDE / ALISHA", guideVisualName: "Alisha", techLabel: "BUILT WITH",
       aboutEyebrow: "A NOTE FROM THE MAKER", aboutTitle: "Technology should feel useful, calm, and a little bit delightful.",
       aboutBody: "Magen is an independent collection of Android projects built around a simple idea: thoughtful software can make everyday things easier without getting in the way. Alisha is the friendly face that connects them.",
       moreOnGithub: "More of the work on GitHub", makerLabel: "THE PERSON BEHIND MAGEN", closingEyebrow: "BUILT IN THE OPEN",
@@ -28,12 +28,12 @@
       mediaLabel: "ALISHA / MAGEN GUIDE"
     },
     ar: {
-      navHome: "الرئيسية", navApps: "التطبيقات", navStats: "التنزيلات", navAbout: "عن Magen",
+      navHome: "الرئيسية", navApps: "التطبيقات", navVisuals: "الصور", navStats: "التنزيلات", navAbout: "عن Magen",
       heroEyebrow: "صانع مستقل · تطبيقات أندرويد", heroTitleA: "أفكار صغيرة.", heroTitleB: "تنفيذ بعناية.",
       heroLede: "أصنع أدوات أندرويد مفيدة وقريبة من الناس، بتصميمها بدافع الفضول والاهتمام بالتفاصيل ومن يستخدمها.",
       exploreApps: "اكتشف التطبيقات", githubProfile: "GitHub", heroFootnote: "مجموعة مركزة من الأدوات اليومية لأندرويد.",
       alishaName: "أليشا", alishaRole: "دليلتك إلى Magen", alishaOpen: "تعرّف إلى أليشا", alishaClose: "إغلاق رسالة أليشا", alishaPrompt: "اضغط", alishaMessage: "مرحبًا، أنا أليشا. أساعدك في العثور على تطبيق Magen المناسب للفيديو أو التنزيل أو الموسيقى أو الخلفيات.", alishaAction: "استكشف التطبيقات الأربعة", liveLabel: "معك", scrollCue: "تابع لاكتشاف المزيد",
-      signalLabel: "منظومة MAGEN", signalText: "أربعة تطبيقات، ورؤية واحدة تهتم بالتفاصيل.",
+      signalLabel: "منظومة MAGEN", signalText: "أربعة تطبيقات، ورؤية واحدة تهتم بالتفاصيل.", visualsEyebrow: "العمل أمامك", visualsTitle: "نظرة أقرب إلى عالم Magen.", visualsIntro: "هوية Magen ودليلتها وأيقونات تطبيقاتها الأربعة في مساحة بصرية واحدة.",
       metricApps: "تطبيقات أندرويد", metricLanguages: "لغتان", metricCare: "عناية بكل تفصيل",
       appsEyebrow: "أدوات لهاتفك", appsTitle: "تعرّف إلى تطبيقات Magen.",
       appsIntro: "لكل تطبيق مهمة واضحة: تشغيل وسائطك، وتنزيل ما تحتاجه، وتنظيم موسيقاك، أو جعل خلفياتك المفضلة أكثر حيوية.",
@@ -42,7 +42,7 @@
       statsDownloadLabel: "تنزيلات ملفات APK", statsNoData: "تعذر جلب عدادات التنزيل مؤقتًا.", statsOpenRepo: "فتح المستودع", statsFootnote: "تجمع الأرقام download_count الذي يعرضه GitHub لكل ملفات APK المرفقة بالإصدارات العامة. لكل ملف أو نسخة بديلة عداد مستقل. هذه تنزيلات للملفات وليست عدد الأشخاص أو التثبيتات أو المستخدمين النشطين. تحفظ القيم في هذا المتصفح 30 دقيقة لمراعاة حدود واجهة GitHub العامة.",
       liveRelease: "أحدث الإصدارات العامة", releaseChecking: "جارٍ التحقق من GitHub…", releaseLive: "مباشر من GitHub", releaseFallback: "عرض بيانات الإصدار المحفوظة",
       downloadLatest: "تنزيل أحدث APK", sourceCode: "المصدر", details: "التفاصيل", allReleases: "كل الإصدارات", appNumber: "تطبيق",
-      detailHighlights: "أبرز ما يقدمه", screenshotsPending: "بانتظار لقطات حديثة", screenshotsPendingLong: "ستُضاف لقطات جديدة تعكس واجهة Magen الحالية عند تزويدنا بها.", appIconAlt: "أيقونة التطبيق", techLabel: "مبني باستخدام",
+      detailHighlights: "أبرز ما يقدمه", screenshotsPending: "الصورة المرفقة للتطبيق", screenshotsPendingLong: "تظهر الصورة المرفقة هنا كجزء من هوية هذا التطبيق.", appIconAlt: "أيقونة التطبيق", mediaLabel: "صورة التطبيق", brandVisualLabel: "الهوية / الشعار", brandVisualName: "Magen Gillan", guideVisualLabel: "الدليلة / أليشا", guideVisualName: "أليشا", techLabel: "مبني باستخدام",
       aboutEyebrow: "ملاحظة من المطوّر", aboutTitle: "ينبغي أن تكون التقنية مفيدة وهادئة، وفيها لمسة من المتعة.",
       aboutBody: "Magen مجموعة مستقلة من مشاريع أندرويد تقوم على فكرة بسيطة: يمكن للبرمجيات المدروسة أن تسهّل تفاصيل يومك دون أن تقف في طريقك. وأليشا هي الوجه الودود الذي يجمع هذه التطبيقات.",
       moreOnGithub: "شاهد المزيد من العمل على GitHub", makerLabel: "الشخص وراء MAGEN", closingEyebrow: "مفتوح المصدر",
@@ -88,6 +88,21 @@
   }
   function iconUrl(app) { return imageUrl(app, app.iconPath); }
 
+  function renderVisualGallery() {
+    const gallery = $("#visualGallery");
+    if (!gallery) return;
+    const entries = [
+      { className: "visual-card--brand", src: "assets/magen-mark.jpg", label: t("brandVisualLabel"), name: t("brandVisualName"), alt: t("brandVisualName") },
+      { className: "visual-card--guide", src: "assets/alisha-guide.png", label: t("guideVisualLabel"), name: t("guideVisualName"), alt: "Alisha, Magen guide" },
+      ...appList.map((app) => ({ className: "visual-card--app", src: app.mediaPath, label: `${t("mediaLabel")} / ${app.name}`, name: app.name, alt: app.mediaAlt[state.lang] }))
+    ];
+    gallery.innerHTML = entries.map((entry) => `<figure class="visual-card ${entry.className} reveal">
+      <div class="visual-card-media"><img src="${esc(entry.src)}" alt="${esc(entry.alt)}" loading="lazy"></div>
+      <figcaption><span>${esc(entry.label)}</span><strong>${esc(entry.name)}</strong></figcaption>
+    </figure>`).join("");
+    observeReveals(gallery);
+  }
+
   function renderApps() {
     const grid = $("#appsGrid");
     if (!grid) return;
@@ -95,12 +110,11 @@
       const rel = currentRelease(app);
       const apk = rel.asset?.browser_download_url || app.apkFallback;
       const file = rel.asset?.name || app.downloadNameFallback;
-      const icon = iconUrl(app);
       const tags = app.features[state.lang].slice(0, 2).map((feature) => `<span class="feature-chip">${esc(feature)}</span>`).join("");
       return `<article class="app-card reveal" style="--app-accent:${esc(app.accent)}" data-app-id="${esc(app.id)}">
         <div class="app-card-art">
           <span class="app-index">${t("appNumber")} / 0${index + 1}</span>
-          <div class="app-icon-stage"><img class="app-icon-hero" src="${esc(icon)}" alt="${esc(t("appIconAlt"))} — ${esc(app.name)}" loading="lazy"><span class="app-preview-note">${esc(t("screenshotsPending"))}</span></div>
+          <div class="app-icon-stage app-media-stage"><img class="app-media-hero" src="${esc(app.mediaPath)}" alt="${esc(app.mediaAlt[state.lang])}" loading="lazy"><span class="app-preview-note">${esc(t("mediaLabel"))}</span></div>
         </div>
         <div class="app-card-body">
           <div class="app-meta-line"><span class="app-category">${esc(app.category[state.lang])}</span><span class="app-version">${esc(rel.tag_name || app.versionFallback)}</span></div>
@@ -171,7 +185,7 @@
       <h2 class="dialog-title" id="dialogTitle">${esc(app.name)}</h2>
       <p class="dialog-description">${esc(app.description[state.lang])}</p>
       <div class="dialog-columns"><div><span class="dialog-features-title">${esc(t("detailHighlights"))}</span><ul class="dialog-feature-list">${features}</ul></div>
-        <div class="dialog-screenshots-pending" role="status">${esc(t("screenshotsPendingLong"))}</div></div>
+        <div class="dialog-media" role="img" aria-label="${esc(app.mediaAlt[state.lang])}"><img src="${esc(app.mediaPath)}" alt="${esc(app.mediaAlt[state.lang])}"><span>${esc(t("screenshotsPendingLong"))}</span></div></div>
       <div class="dialog-stack">${esc(t("techLabel"))} · ${esc(app.stack)}</div>
       <div class="dialog-actions"><a class="download-button" href="${esc(secureHttpsUrl(rel.asset?.browser_download_url || app.apkFallback, app.apkFallback))}" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v11m0 0 4-4m-4 4-4-4M5 17v3h14v-3"/></svg>${esc(t("downloadLatest"))}</a><a class="source-button" href="https://github.com/magen-gillan/${encodeURIComponent(app.repo)}" target="_blank" rel="noreferrer">${esc(t("sourceCode"))} ↗</a><a class="source-button" href="${esc(secureHttpsUrl(rel.html_url, app.releaseFallback))}" target="_blank" rel="noreferrer">${esc(t("allReleases"))} ↗</a></div>`;
   }
@@ -296,6 +310,7 @@
     const desc = $("meta[name='description']");
     if (desc) desc.content = state.lang === "ar" ? "Magen Gillan — تطبيقات أندرويد مفيدة بعناية. تعرّف إلى أليشا وتطبيقات Magen Player وDownload وAudio وWallpaper." : "Magen Gillan — independent Android apps, thoughtfully built. Meet Alisha and explore Magen Player, Download, Audio and Wallpaper.";
     renderApps();
+    renderVisualGallery();
     renderDownloadStats();
     if (state.dialogId) { const app = appList.find((item) => item.id === state.dialogId); if (app) renderDialog(app); }
     if (persist) { try { localStorage.setItem("magen-lang", state.lang); } catch { /* ignore unavailable storage */ } }
