@@ -21,10 +21,8 @@ function MagenDepthField() {
       textAlign="center"
       title="Magen Gillan"
       subtitle=""
-      buttonText="Explore components"
-      buttonHref="#apps"
-      secondaryButtonText="Learn more"
-      secondaryButtonHref="#controls"
+      buttonText=""
+      secondaryButtonText=""
       fontFamily="'Plus Jakarta Sans', 'Inter Variable', sans-serif"
       background="#cabebe"
       color="#262f09"
@@ -44,7 +42,7 @@ function MagenDepthField() {
       paused={false}
       showText={true}
       imageOrigin="center"
-      height="100svh"
+      height="50svh"
     />
   );
 }

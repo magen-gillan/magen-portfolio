@@ -1,12 +1,12 @@
 .react-depth-hero {
-  min-height: calc(100svh - 78px);
+  min-height: calc(50svh + 64px);
   display: block;
   position: relative;
   padding-block: 0 64px;
 }
 
 .react-depth-hero #depthFieldReact .depth-field {
-  min-height: 100svh;
+  min-height: 50svh;
   border: 1px solid rgba(38, 47, 9, .18);
   border-radius: 28px;
   box-shadow: 0 24px 70px rgba(0, 0, 0, .18);
