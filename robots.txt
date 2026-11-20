@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://magen-gillan.github.io/magen-portfolio/sitemap.xml
